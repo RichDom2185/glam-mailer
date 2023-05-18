@@ -1,5 +1,6 @@
 import { Box, Navbar, Text, rem, useMantineTheme } from "@mantine/core";
 import React from "react";
+import AppSections from "./AppSections";
 
 const AppNavigation: React.FC = () => {
   const theme = useMantineTheme();
@@ -7,7 +8,7 @@ const AppNavigation: React.FC = () => {
   return (
     <Navbar width={{ base: 300 }} p="xs">
       <Navbar.Section grow mt="xs">
-        {/* TOOD: Add sections */}
+        <AppSections />
       </Navbar.Section>
       <Navbar.Section>
         <Box
