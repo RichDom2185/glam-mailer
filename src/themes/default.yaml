@@ -1,0 +1,9 @@
+name: Default Theme
+author: Richard Dominick
+description: The default theme for glam-mailer.
+styles:
+  h1:
+    - text-green-300
+  code:
+    - font-bold
+    - bg-red-500
