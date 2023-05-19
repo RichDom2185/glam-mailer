@@ -16,6 +16,12 @@ const sections = [
     label: "Drafts",
     ref: "/drafts",
   },
+  {
+    icon: HiOutlineDocumentDuplicate,
+    color: "cyan",
+    label: "Theme Editor",
+    ref: "/edit-theme",
+  },
 ] as const;
 
 const AppSections: React.FC = () => {

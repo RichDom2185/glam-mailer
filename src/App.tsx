@@ -5,6 +5,7 @@ import AppHeader from "./components/app/AppHeader";
 import AppNavigation from "./components/app/AppNavigation";
 import Compose from "./pages/Compose";
 import Drafts from "./pages/Drafts";
+import ThemeEditor from "./pages/ThemeEditor";
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/compose" element={<Compose />} />
           <Route path="/drafts" element={<Drafts />} />
+          <Route path="/edit-theme" element={<ThemeEditor />} />
         </Routes>
       </AppShell>
     </MantineProvider>
