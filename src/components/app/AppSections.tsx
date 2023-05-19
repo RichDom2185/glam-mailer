@@ -26,6 +26,7 @@ const AppSections: React.FC = () => {
         const Icon = section.icon;
         return (
           <NavLink
+            key={section.ref}
             component={Link}
             to={section.ref}
             active={location.pathname === section.ref}

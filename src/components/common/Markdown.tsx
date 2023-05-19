@@ -2,11 +2,14 @@ import React from "react";
 import { Components } from "react-markdown";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import remarkGfm from "remark-gfm";
+import { TAILWIND_CLASS_PREFIX } from "../../utils/constants";
 import { Theme, getTheme } from "../../utils/theme";
 
 type Props = {
+  containerRef?: React.RefObject<HTMLDivElement>;
   children: string;
 };
+
 type StyledComponentProps = {
   tag: keyof Components;
   className: string;
@@ -22,7 +25,12 @@ const StyledComponent: React.FC<StyledComponentProps> = ({
   tailwindClasses,
   ...props
 }) => {
-  const tagStyles = tailwindClasses.map((style) => "tw-" + style);
+  const tagStyles = tailwindClasses.flatMap((style) => [
+    // We include the default style as well
+    // for use when exporting as email
+    style,
+    `${TAILWIND_CLASS_PREFIX}${style}`,
+  ]);
   if (className) {
     tagStyles.push(className);
   }
@@ -31,7 +39,8 @@ const StyledComponent: React.FC<StyledComponentProps> = ({
   return <Tag className={tagStyles.join(" ")} {...props} />;
 };
 
-const Markdown: React.FC<Props> = ({ children }) => {
+const Markdown: React.FC<Props> = ({ containerRef, children }) => {
+  // TODO: Use a prop to respect abstraction boundaries
   const { styles } = getTheme() as Theme;
   // Must use any here because of the large union type
   const customComponents: any = {};
@@ -50,9 +59,14 @@ const Markdown: React.FC<Props> = ({ children }) => {
   });
 
   return (
-    <ReactMarkdown remarkPlugins={plugins} components={customComponents}>
-      {children}
-    </ReactMarkdown>
+    <div ref={containerRef}>
+      <ReactMarkdown
+        remarkPlugins={plugins}
+        components={customComponents}
+        linkTarget="_blank"
+        children={children}
+      />
+    </div>
   );
 };
 

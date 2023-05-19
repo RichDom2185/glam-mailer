@@ -1,13 +1,38 @@
 import { Button, Group, Menu, SimpleGrid, Text, Title } from "@mantine/core";
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import {
   HiOutlineDocumentDuplicate,
   HiOutlinePaperAirplane,
   HiOutlinePencilSquare,
 } from "react-icons/hi2";
-import { SiGmail, SiMicrosoftoutlook } from "react-icons/si";
+import Markdown from "../components/common/Markdown";
+import { PLACEHOLDER_MARKDOWN_CONTENT } from "../utils/constants";
+import { MAIL_PROVIDERS } from "../utils/mail";
+import { formatAsHtmlEmail } from "../utils/theme";
 
 const Compose: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleCopyToClipboard = useCallback(async () => {
+    const e = ref.current;
+    if (!e) {
+      return;
+    }
+
+    const html = e.innerHTML;
+    const formattedHtml = await formatAsHtmlEmail(html);
+    navigator.clipboard
+      .write([
+        new ClipboardItem({
+          "text/html": new Blob([formattedHtml], { type: "text/html" }),
+          "text/plain": new Blob([formattedHtml], { type: "text/plain" }),
+        }),
+      ])
+      .then(() => {
+        alert("Copied to clipboard!");
+      });
+  }, [ref]);
+
   return (
     <div>
       <SimpleGrid cols={2}>
@@ -34,17 +59,29 @@ const Compose: React.FC = () => {
 
             <Menu.Dropdown>
               <Menu.Label>Send via</Menu.Label>
-              <Menu.Item icon={<SiMicrosoftoutlook color="#0078D4" />}>
-                Outlook
-              </Menu.Item>
-              <Menu.Item icon={<SiGmail color="#EA4335" />}>Gmail</Menu.Item>
+              {MAIL_PROVIDERS.map((provider) => {
+                const ProviderIcon = provider.icon;
+                return (
+                  <Menu.Item
+                    key={provider.label}
+                    icon={<ProviderIcon color={provider.color} />}
+                  >
+                    {provider.label}
+                  </Menu.Item>
+                );
+              })}
               <Menu.Divider />
-              <Menu.Label>Alternatively</Menu.Label>
-              <Menu.Item icon={<HiOutlineDocumentDuplicate />}>
+              <Menu.Label>Manual send</Menu.Label>
+              <Menu.Item
+                icon={<HiOutlineDocumentDuplicate />}
+                onClick={() => handleCopyToClipboard()}
+              >
                 Copy to clipboard
               </Menu.Item>
             </Menu.Dropdown>
           </Menu>
+          {/* TODO: Use editor value when editor is implemented */}
+          <Markdown containerRef={ref}>{PLACEHOLDER_MARKDOWN_CONTENT}</Markdown>
         </div>
       </SimpleGrid>
     </div>
