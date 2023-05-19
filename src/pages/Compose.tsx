@@ -1,5 +1,14 @@
-import { Button, Group, Menu, SimpleGrid, Text, Title } from "@mantine/core";
-import React, { useCallback, useRef } from "react";
+import {
+  Button,
+  Divider,
+  Group,
+  Menu,
+  SimpleGrid,
+  Text,
+  Title,
+} from "@mantine/core";
+import React, { useCallback, useRef, useState } from "react";
+import AceEditor from "react-ace";
 import {
   HiOutlineDocumentDuplicate,
   HiOutlinePaperAirplane,
@@ -10,7 +19,11 @@ import { PLACEHOLDER_MARKDOWN_CONTENT } from "../utils/constants";
 import { MAIL_PROVIDERS } from "../utils/mail";
 import { formatAsHtmlEmail } from "../utils/theme";
 
+import "ace-builds/src-noconflict/ext-language_tools";
+import "ace-builds/src-noconflict/mode-markdown";
+
 const Compose: React.FC = () => {
+  const [editorValue, setEditorValue] = useState(PLACEHOLDER_MARKDOWN_CONTENT);
   const ref = useRef<HTMLDivElement>(null);
 
   const handleCopyToClipboard = useCallback(async () => {
@@ -48,6 +61,13 @@ const Compose: React.FC = () => {
             about styling, we will theme it. You can utilize Markdown to add
             formatting and structure to your message
           </Text>
+          <AceEditor
+            mode="markdown"
+            width="100%"
+            onChange={setEditorValue}
+            value={editorValue}
+            wrapEnabled
+          />
         </div>
         <div>
           <Menu>
@@ -80,8 +100,13 @@ const Compose: React.FC = () => {
               </Menu.Item>
             </Menu.Dropdown>
           </Menu>
-          {/* TODO: Use editor value when editor is implemented */}
-          <Markdown containerRef={ref}>{PLACEHOLDER_MARKDOWN_CONTENT}</Markdown>
+          <Divider
+            my="sm"
+            variant="dashed"
+            label="Email Preview: "
+            labelPosition="center"
+          />
+          <Markdown containerRef={ref}>{editorValue}</Markdown>
         </div>
       </SimpleGrid>
     </div>
