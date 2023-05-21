@@ -24,6 +24,7 @@
     "react-icons": "^4.8.0",
     "react-markdown": "^8.0.7",
     "react-router-dom": "^6.11.2",
+    "react-to-print": "^2.14.12",
     "rehype-add-classes": "^1.0.0",
     "remark-gfm": "^3.0.1",
     "yaml": "^2.2.2"

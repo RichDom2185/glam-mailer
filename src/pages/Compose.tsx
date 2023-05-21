@@ -10,10 +10,12 @@ import {
 import React, { useCallback, useRef, useState } from "react";
 import AceEditor from "react-ace";
 import {
+  HiOutlineArrowTopRightOnSquare,
   HiOutlineDocumentDuplicate,
   HiOutlinePaperAirplane,
   HiOutlinePencilSquare,
 } from "react-icons/hi2";
+import ReactToPrint from "react-to-print";
 import Markdown from "../components/common/Markdown";
 import { PLACEHOLDER_MARKDOWN_CONTENT } from "../utils/constants";
 import { MAIL_PROVIDERS } from "../utils/mail";
@@ -98,6 +100,15 @@ const Compose: React.FC = () => {
               >
                 Copy to clipboard
               </Menu.Item>
+              <ReactToPrint
+                pageStyle=""
+                trigger={() => (
+                  <Menu.Item icon={<HiOutlineArrowTopRightOnSquare />}>
+                    Save as PDF
+                  </Menu.Item>
+                )}
+                content={() => ref.current}
+              />
             </Menu.Dropdown>
           </Menu>
           <Divider
