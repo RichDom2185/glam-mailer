@@ -25,6 +25,14 @@ export const getTheme = (): Theme => {
   return parse(defaultTheme) as Theme;
 };
 
+// Precondition: `className` is not conditional
+const generatePrefixedClass = (className: string): string => {
+  const isImportant = className.startsWith("!");
+  return isImportant
+    ? `!${TAILWIND_CLASS_PREFIX}${className.slice(1)}`
+    : `${TAILWIND_CLASS_PREFIX}${className}`;
+};
+
 export const getClassMappingFrom = (theme: Theme): Record<string, string> => {
   const { styles } = theme;
   const classMap: Record<string, string> = {};
@@ -36,7 +44,19 @@ export const getClassMappingFrom = (theme: Theme): Record<string, string> => {
       // We include the default style as well
       // for use when exporting as email
       // TODO: Use prefix for exports
-      .flatMap((style) => [style, `${TAILWIND_CLASS_PREFIX}${style}`])
+      .flatMap((style) => {
+        const isConditional = style.includes(":");
+        if (!isConditional) {
+          return [style, generatePrefixedClass(style)];
+        }
+
+        const [condition, remaining] = style.split(":", 2);
+        // We must define it in `prefixedClass` first
+        // for some reason; if we substitute the function
+        // call directly, it doesn't work.
+        const prefixedClass = generatePrefixedClass(remaining);
+        return [style, `${condition}:${prefixedClass}`];
+      })
       .join(" ");
   });
   return classMap;
