@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <MantineProvider withGlobalStyles withNormalizeCSS>
       <AppShell
         padding="md"
-        fixed={false}
+        fixed
         navbar={<AppNavigation />}
         header={<AppHeader />}
         styles={(theme) => ({
