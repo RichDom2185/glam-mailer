@@ -25,6 +25,7 @@ const Markdown: React.FC<Props> = ({ containerRef, children }) => {
   return (
     <div ref={containerRef}>
       <ReactMarkdown
+        className={classesToAdd[".markdown-body"] ?? ""}
         remarkPlugins={plugins}
         rehypePlugins={[[addClasses, classesToAdd]]}
         linkTarget="_blank"

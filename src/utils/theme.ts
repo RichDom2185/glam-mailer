@@ -12,6 +12,7 @@ export type Theme = {
   name: string;
   author: string;
   description: string;
+  version: string;
   styles: {
     // TODO: Update types to reflect usage of CSS selectors,
     //       not just HTML element tags
