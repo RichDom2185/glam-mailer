@@ -8,7 +8,7 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import AceEditor from "react-ace";
 import {
   HiOutlineArrowPath,
@@ -21,9 +21,20 @@ import defaultTheme from "../themes/default.yaml?raw";
 
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-yaml";
+import { getTheme } from "../utils/theme";
 
 const ThemeEditor: React.FC = () => {
   const [editorValue, setEditorValue] = useState(defaultTheme);
+
+  const theme = useMemo(() => {
+    try {
+      return getTheme(editorValue);
+    } catch {
+      // TODO: Handle this more gracefully
+      console.error("Invalid theme, using default theme");
+      return getTheme(defaultTheme);
+    }
+  }, [editorValue]);
 
   return (
     <div>
@@ -77,7 +88,7 @@ const ThemeEditor: React.FC = () => {
         </div>
         <div>
           {/* TODO: Load every possible supported (extended) Markdown construct */}
-          <Markdown>{SAMPLE_MARKDOWN_CONTENT}</Markdown>
+          <Markdown theme={theme}>{SAMPLE_MARKDOWN_CONTENT}</Markdown>
         </div>
       </SimpleGrid>
     </div>

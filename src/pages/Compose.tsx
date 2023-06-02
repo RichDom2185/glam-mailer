@@ -25,7 +25,7 @@ import SAMPLE_MARKDOWN_CONTENT from "../assets/md-sample.md?raw";
 import Markdown from "../components/common/Markdown";
 import { PLACEHOLDER_MARKDOWN_CONTENT } from "../utils/constants";
 import { MAIL_PROVIDERS } from "../utils/mail";
-import { formatAsHtmlEmail } from "../utils/theme";
+import { formatAsHtmlEmail, getTheme } from "../utils/theme";
 
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-markdown";
@@ -35,6 +35,8 @@ const Compose: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   const [isFormatting, setIsFormatting] = useState(false);
+
+  const theme = getTheme();
 
   const handleCopyToClipboard = useCallback(async () => {
     const e = ref.current;
@@ -172,7 +174,9 @@ const Compose: React.FC = () => {
             label="Email preview"
             labelPosition="center"
           />
-          <Markdown containerRef={ref}>{editorValue}</Markdown>
+          <Markdown theme={theme} containerRef={ref}>
+            {editorValue}
+          </Markdown>
         </div>
       </SimpleGrid>
     </div>
