@@ -1,9 +1,124 @@
 name: Default Theme
 author: Richard Dominick
 description: The default theme for glam-mailer.
+version: 0.1.0
 styles:
-  h1:
-    - text-green-300
+  # Note that the "+" selector does not work
+  # and needs to be replaced by "~" instead.
+  # TODO: Add CSS resets
+
+  #################
+  ### MAIN BODY ###
+  #################
+  .markdown-body:
+    - mx-auto
+    - max-w-3xl
+    - my-2
+    - bg-white
+    - rounded-lg
+    - drop-shadow-xl
+    - py-4
+    - px-6
+    - print:drop-shadow-none
+    - print:bg-transparent
+  "*":
+    - leading-normal
+    - first:mt-0
+  # "* ~ *":
+  #   # FIXME: This breaks backend
+  #   - "[div>&]:mt-4" # targets only top-level elements
+  #   - "[div>&]:mb-0" # targets only top-level elements
+  ############
+  ### TEXT ###
+  ############
+  h1, h2:
+    - text-cyan-800
+  h2,.sticker:
+    - underline
+    - underline-offset-8
+    - decoration-wavy
+  .sticker: # unused style at the moment
+    - w-fit
+    - bg-orange-100
+    - px-3
+    - pt-1
+    - pb-4
+    - rounded-md
+    - drop-shadow-md
+  h3, h4, h5, h6:
+    - text-cyan-800
+  a:
+    - text-cyan-600
+    - underline-offset-4
+    - no-underline
+    - hover:underline
+  p:
+    - text-justify
+  blockquote:
+    - m-0 # CSS "reset"
+    - pl-6
+    - border-0
+    - border-l-4
+    - border-gray-300
+    - border-dashed
+    - italic
+    - text-sm
+  ############
+  ### CODE ###
+  ############
+  pre:
+    - bg-gray-100
+    - px-3
+    - py-2
+    - rounded-md
+    - overflow-x-auto
   code:
-    - font-bold
-    - bg-red-500
+    - text-sm
+  :not(pre) > code:
+    - bg-gray-200
+    - rounded-md
+    - px-2
+    - py-0.5
+  ##############
+  ### IMAGES ###
+  ##############
+  p:has(img):
+    - "!text-center"
+  img:
+    - max-w-full
+    - object-contain
+    - max-h-64
+    # - w-full # FIXME: Hotfix for plantUML diagrams
+    # - mx-auto # FIXME: Hotfix for plantUML diagrams
+  p > img:
+    # - "!w-fit" # FIXME: Hotfix for plantUML diagrams
+    - rounded-md
+  ##############
+  ### TABLES ###
+  ##############
+  table:
+    - table-auto
+    - w-full
+    - border-collapse
+    - rounded-md
+    - overflow-hidden
+  thead:
+    - bg-gray-100
+  tbody > tr:
+    - odd:bg-white
+    - even:bg-gray-50
+  th,td:
+    - border
+    - border-gray-200
+    - border-solid
+    - px-4
+    - py-2
+  ##############
+  ### OTHERS ###
+  ##############
+  hr:
+    - my-6
+    - border-none
+    - h-1
+    - bg-gray-200
+    - rounded-full

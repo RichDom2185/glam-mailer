@@ -8,23 +8,10 @@ export const TAILWIND_CLASS_PREFIX: string =
   import.meta.env.VITE_TAILWIND_PREFIX ?? "tw-";
 
 // TODO: Remove and replace this with a real email message
-export const PLACEHOLDER_MARKDOWN_CONTENT = `
-# Hello, world!
+export const PLACEHOLDER_MARKDOWN_CONTENT = `# Dear [RECIPIENT],
 
-This is a sample email message. It is written in Markdown, and will be converted to HTML when you send it.
+Write your email here!
 
-\`\`\`js
-const message = "Hello, world!";
-console.log(message);
-\`\`\`
-
-## This is a heading
-
-### This is a subheading
-
-#### This is a subsubheading
-
-Just a link: https://reactjs.com.
-
-##### This is a subsubsubheading
+Best regards,
+[SENDER]
 `;
