@@ -4,6 +4,7 @@ import {
   Divider,
   Group,
   Menu,
+  Notification,
   SimpleGrid,
   Space,
   Text,
@@ -33,12 +34,15 @@ const Compose: React.FC = () => {
   const [editorValue, setEditorValue] = useState(PLACEHOLDER_MARKDOWN_CONTENT);
   const ref = useRef<HTMLDivElement>(null);
 
+  const [isFormatting, setIsFormatting] = useState(false);
+
   const handleCopyToClipboard = useCallback(async () => {
     const e = ref.current;
     if (!e) {
       return;
     }
 
+    setIsFormatting(true);
     const html = e.innerHTML;
     const formattedHtml = await formatAsHtmlEmail(html);
     navigator.clipboard
@@ -49,7 +53,12 @@ const Compose: React.FC = () => {
         }),
       ])
       .then(() => {
+        setIsFormatting(false);
         alert("Copied to clipboard!");
+      })
+      .catch(() => {
+        setIsFormatting(false);
+        alert("Something went wrong.");
       });
   }, [ref]);
 
@@ -145,6 +154,18 @@ const Compose: React.FC = () => {
               />
             </Menu.Dropdown>
           </Menu>
+          {isFormatting && (
+            <>
+              <Space h="md" />
+              <Notification
+                loading
+                title="Please wait while we turn your document into an email-compatible format"
+                withCloseButton={false}
+              >
+                This might take a few seconds...
+              </Notification>
+            </>
+          )}
           <Divider
             my="sm"
             variant="dashed"
