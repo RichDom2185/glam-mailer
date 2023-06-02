@@ -21,8 +21,8 @@ export type Theme = {
 };
 
 // TODO: Use redux
-export const getTheme = (): Theme => {
-  return parse(defaultTheme) as Theme;
+export const getTheme = (yamlInput: string = defaultTheme): Theme => {
+  return parse(yamlInput) as Theme;
 };
 
 // Precondition: `className` is not conditional

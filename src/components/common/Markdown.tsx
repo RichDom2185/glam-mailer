@@ -10,9 +10,10 @@ import remarkMath from "remark-math";
 import remarkSmartypants from "remark-smartypants";
 import { remarkTruncateLinks } from "remark-truncate-links";
 
-import { getClassMappingFrom, getTheme } from "../../utils/theme";
+import { Theme, getClassMappingFrom, getTheme } from "../../utils/theme";
 
 type Props = {
+  theme: Theme;
   containerRef?: React.RefObject<HTMLDivElement>;
   children: string;
 };
@@ -27,14 +28,21 @@ const remarkPlugins = [
   remarkGemoji,
 ];
 
-const Markdown: React.FC<Props> = ({ containerRef, children }) => {
-  // TODO: Use a prop to respect abstraction boundaries
-  const theme = getTheme();
+const Markdown: React.FC<Props> = ({ theme, containerRef, children }) => {
   const classesToAdd = useMemo(() => {
-    const classesToAdd: {
-      [key: string]: string;
-    } = getClassMappingFrom(theme);
-    return classesToAdd;
+    try {
+      const classesToAdd: {
+        [key: string]: string;
+      } = getClassMappingFrom(theme);
+      return classesToAdd;
+    } catch {
+      // FIXME: Handle this more gracefully inside getTheme
+      console.error("An error has occurred, using default theme");
+      const classesToAdd: {
+        [key: string]: string;
+      } = getClassMappingFrom(getTheme());
+      return classesToAdd;
+    }
   }, [theme]);
 
   return (
