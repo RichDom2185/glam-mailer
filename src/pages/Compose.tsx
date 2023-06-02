@@ -15,10 +15,12 @@ import {
   HiOutlineArrowTopRightOnSquare,
   HiOutlineBackspace,
   HiOutlineDocumentDuplicate,
+  HiOutlineDocumentText,
   HiOutlinePaperAirplane,
   HiOutlinePencilSquare,
 } from "react-icons/hi2";
 import ReactToPrint from "react-to-print";
+import SAMPLE_MARKDOWN_CONTENT from "../assets/md-sample.md?raw";
 import Markdown from "../components/common/Markdown";
 import { PLACEHOLDER_MARKDOWN_CONTENT } from "../utils/constants";
 import { MAIL_PROVIDERS } from "../utils/mail";
@@ -66,10 +68,18 @@ const Compose: React.FC = () => {
           <Text>
             Simply type your message below. Focus on the content – don't worry
             about styling, we will theme it. You can utilize Markdown to add
-            formatting and structure to your message
+            formatting and structure to your message.
           </Text>
           <Space h="md" />
-          <Box sx={{ display: "flex", justifyContent: "end" }}>
+          <Text>Unsure of what's supported? Load the example below!</Text>
+          <Space h="md" />
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Button
+              rightIcon={<HiOutlineDocumentText />}
+              onClick={() => setEditorValue(SAMPLE_MARKDOWN_CONTENT)}
+            >
+              Load Example
+            </Button>
             <Button
               color="red"
               rightIcon={<HiOutlineBackspace />}
