@@ -9,7 +9,6 @@ import {
   Title,
 } from "@mantine/core";
 import React, { useMemo, useState } from "react";
-import AceEditor from "react-ace";
 import {
   HiOutlineArrowPath,
   HiOutlineBackspace,
@@ -21,6 +20,7 @@ import defaultTheme from "../themes/default.yaml?raw";
 
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-yaml";
+import Editor from "../components/common/Editor";
 import { getTheme } from "../utils/theme";
 
 const ThemeEditor: React.FC = () => {
@@ -78,13 +78,7 @@ const ThemeEditor: React.FC = () => {
             label="Write your theme below"
             labelPosition="center"
           />
-          <AceEditor
-            mode="yaml"
-            width="100%"
-            onChange={setEditorValue}
-            value={editorValue}
-            wrapEnabled
-          />
+          <Editor mode="yaml" onChange={setEditorValue} value={editorValue} />
         </div>
         <div>
           {/* TODO: Load every possible supported (extended) Markdown construct */}
