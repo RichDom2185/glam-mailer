@@ -15,3 +15,5 @@ Write your email here!
 Best regards,
 [SENDER]
 `;
+
+export const HEADER_HEIGHT = 60 as const;
