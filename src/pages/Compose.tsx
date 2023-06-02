@@ -11,7 +11,6 @@ import {
   Title,
 } from "@mantine/core";
 import React, { useCallback, useRef, useState } from "react";
-import AceEditor from "react-ace";
 import {
   HiOutlineArrowTopRightOnSquare,
   HiOutlineBackspace,
@@ -22,6 +21,7 @@ import {
 } from "react-icons/hi2";
 import ReactToPrint from "react-to-print";
 import SAMPLE_MARKDOWN_CONTENT from "../assets/md-sample.md?raw";
+import Editor from "../components/common/Editor";
 import Markdown from "../components/common/Markdown";
 import { PLACEHOLDER_MARKDOWN_CONTENT } from "../utils/constants";
 import { MAIL_PROVIDERS } from "../utils/mail";
@@ -103,14 +103,10 @@ const Compose: React.FC = () => {
             label="Write your email below"
             labelPosition="center"
           />
-          <AceEditor
-            setOptions={{ cursorStyle: "smooth" }}
-            fontSize={13}
+          <Editor
             mode="markdown"
-            width="100%"
             onChange={setEditorValue}
             value={editorValue}
-            wrapEnabled
           />
         </div>
         <div>
