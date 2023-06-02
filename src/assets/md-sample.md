@@ -53,6 +53,7 @@ Click [here](https://mateam.net/html-escape-characters/) or do an online search 
 
 - This is some "quoted text" &rarr; notice that they have become "smart quotes", just like in a normal email/office document!
 - Also, look what happens when I type in a _double-hyphen_ -- it automatically becomes a _dash_!
+- And when I type three dots, it becomes an ellipsis...
 
 ### Syntax Highlighting for Code
 
