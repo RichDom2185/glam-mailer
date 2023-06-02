@@ -3,6 +3,7 @@ import {
   Button,
   Divider,
   Group,
+  Select,
   SimpleGrid,
   Space,
   Text,
@@ -14,6 +15,7 @@ import {
   HiOutlineBackspace,
   HiOutlinePaintBrush,
 } from "react-icons/hi2";
+import FEATURE_MARKDOWN_CONTENT from "../assets/md-features.md?raw";
 import SAMPLE_MARKDOWN_CONTENT from "../assets/md-sample.md?raw";
 import Editor from "../components/common/Editor";
 import Markdown from "../components/common/Markdown";
@@ -25,6 +27,9 @@ import "ace-builds/src-noconflict/mode-yaml";
 
 const ThemeEditor: React.FC = () => {
   const [editorValue, setEditorValue] = useState(defaultTheme);
+  const [previewType, setPreviewType] = useState<"sample" | "features">(
+    "features"
+  );
 
   const theme = useMemo(() => {
     try {
@@ -81,8 +86,28 @@ const ThemeEditor: React.FC = () => {
           <Editor mode="yaml" onChange={setEditorValue} value={editorValue} />
         </div>
         <div>
-          {/* TODO: Load every possible supported (extended) Markdown construct */}
-          <Markdown theme={theme}>{SAMPLE_MARKDOWN_CONTENT}</Markdown>
+          <Select
+            value={previewType}
+            label="Preview type"
+            // TODO: Investigate if `any` can be removed here
+            // TODO: Refactor
+            onChange={(e: any) => setPreviewType(e)}
+            data={[
+              { value: "features", label: "List of supported features" },
+              { value: "sample", label: "Sample document" },
+            ]}
+          />
+          <Divider
+            my="sm"
+            variant="dashed"
+            label="Theme preview"
+            labelPosition="center"
+          />
+          <Markdown theme={theme}>
+            {previewType === "features"
+              ? FEATURE_MARKDOWN_CONTENT
+              : SAMPLE_MARKDOWN_CONTENT}
+          </Markdown>
         </div>
       </SimpleGrid>
     </div>
