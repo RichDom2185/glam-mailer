@@ -80,13 +80,14 @@ const Compose: React.FC = () => {
             </Menu.Target>
 
             <Menu.Dropdown>
-              <Menu.Label>Send via</Menu.Label>
+              <Menu.Label>Send via (coming soon)</Menu.Label>
               {MAIL_PROVIDERS.map((provider) => {
                 const ProviderIcon = provider.icon;
                 return (
                   <Menu.Item
+                    disabled // TODO: Remove when ready
                     key={provider.label}
-                    icon={<ProviderIcon color={provider.color} />}
+                    icon={<ProviderIcon color={false && provider.color} />}
                   >
                     {provider.label}
                   </Menu.Item>
