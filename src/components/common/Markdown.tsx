@@ -1,7 +1,6 @@
+import remarkSimplePlantUML from "@akebifiky/remark-simple-plantuml";
 import React, { useMemo } from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-// TODO: Set up type definitions
-import remarkSimplePlantUML from "@akebifiky/remark-simple-plantuml";
 import addClasses from "rehype-add-classes";
 import rehypeHighlight from "rehype-highlight";
 import rehypeMathjax from "rehype-mathjax";
