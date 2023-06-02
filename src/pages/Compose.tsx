@@ -11,6 +11,7 @@ import React, { useCallback, useRef, useState } from "react";
 import AceEditor from "react-ace";
 import {
   HiOutlineArrowTopRightOnSquare,
+  HiOutlineBackspace,
   HiOutlineDocumentDuplicate,
   HiOutlinePaperAirplane,
   HiOutlinePencilSquare,
@@ -63,6 +64,13 @@ const Compose: React.FC = () => {
             about styling, we will theme it. You can utilize Markdown to add
             formatting and structure to your message
           </Text>
+          <Button
+            color="red"
+            rightIcon={<HiOutlineBackspace />}
+            onClick={() => setEditorValue("")}
+          >
+            Clear All
+          </Button>
           <AceEditor
             mode="markdown"
             width="100%"
