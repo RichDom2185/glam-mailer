@@ -15,13 +15,13 @@ import {
   HiOutlinePaintBrush,
 } from "react-icons/hi2";
 import SAMPLE_MARKDOWN_CONTENT from "../assets/md-sample.md?raw";
+import Editor from "../components/common/Editor";
 import Markdown from "../components/common/Markdown";
 import defaultTheme from "../themes/default.yaml?raw";
+import { getTheme } from "../utils/theme";
 
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-yaml";
-import Editor from "../components/common/Editor";
-import { getTheme } from "../utils/theme";
 
 const ThemeEditor: React.FC = () => {
   const [editorValue, setEditorValue] = useState(defaultTheme);
