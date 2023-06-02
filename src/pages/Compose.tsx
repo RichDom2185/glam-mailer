@@ -1,9 +1,11 @@
 import {
+  Box,
   Button,
   Divider,
   Group,
   Menu,
   SimpleGrid,
+  Space,
   Text,
   Title,
 } from "@mantine/core";
@@ -58,20 +60,33 @@ const Compose: React.FC = () => {
               <HiOutlinePencilSquare /> Let's create an email!
             </Group>
           </Title>
+          <Space h="md" />
           <Text>Let's streamline the process of creating your message.</Text>
+          <Space h="md" />
           <Text>
             Simply type your message below. Focus on the content – don't worry
             about styling, we will theme it. You can utilize Markdown to add
             formatting and structure to your message
           </Text>
-          <Button
-            color="red"
-            rightIcon={<HiOutlineBackspace />}
-            onClick={() => setEditorValue("")}
-          >
-            Clear All
-          </Button>
+          <Space h="md" />
+          <Box sx={{ display: "flex", justifyContent: "end" }}>
+            <Button
+              color="red"
+              rightIcon={<HiOutlineBackspace />}
+              onClick={() => setEditorValue("")}
+            >
+              Clear All
+            </Button>
+          </Box>
+          <Divider
+            my="sm"
+            variant="dashed"
+            label="Write your email below"
+            labelPosition="center"
+          />
           <AceEditor
+            setOptions={{ cursorStyle: "smooth" }}
+            fontSize={13}
             mode="markdown"
             width="100%"
             onChange={setEditorValue}
@@ -123,7 +138,7 @@ const Compose: React.FC = () => {
           <Divider
             my="sm"
             variant="dashed"
-            label="Email Preview: "
+            label="Email preview"
             labelPosition="center"
           />
           <Markdown containerRef={ref}>{editorValue}</Markdown>
