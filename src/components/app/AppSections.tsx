@@ -1,6 +1,10 @@
 import { NavLink, ThemeIcon } from "@mantine/core";
 import React from "react";
-import { HiOutlineDocumentDuplicate, HiOutlineEnvelope } from "react-icons/hi2";
+import {
+  HiOutlineDocumentDuplicate,
+  HiOutlineEnvelope,
+  HiOutlinePaintBrush,
+} from "react-icons/hi2";
 import { Link, useLocation } from "react-router-dom";
 
 const sections = [
@@ -17,7 +21,7 @@ const sections = [
     ref: "/drafts",
   },
   {
-    icon: HiOutlineDocumentDuplicate,
+    icon: HiOutlinePaintBrush,
     color: "cyan",
     label: "Theme Editor",
     ref: "/edit-theme",
