@@ -11,7 +11,7 @@
   },
   "resolutions": {
     "//": "To add support for selectors like :has() to rehype-add-classes",
-    "hast-util-select": "^2.1.0"
+    "hast-util-select": "^6.0.0"
   },
   "dependencies": {
     "@akebifiky/remark-simple-plantuml": "^1.0.2",
