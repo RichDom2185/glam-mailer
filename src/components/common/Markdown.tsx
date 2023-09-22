@@ -53,7 +53,7 @@ const Markdown: React.FC<Props> = ({ theme, containerRef, children }) => {
         // Take note of ordering of applying plugins
         rehypePlugins={[
           rehypeMathjax,
-          [rehypeHighlight, { ignoreMissing: true }],
+          [rehypeHighlight, {}],
           [addClasses, classesToAdd],
         ]}
         linkTarget="_blank"
