@@ -20,17 +20,17 @@ import {
   HiOutlinePencilSquare,
 } from "react-icons/hi2";
 import ReactToPrint from "react-to-print";
-import SAMPLE_MARKDOWN_CONTENT from "../assets/md-sample.md?raw";
-import Editor from "../components/common/Editor";
-import Markdown from "../components/common/Markdown";
-import { PLACEHOLDER_MARKDOWN_CONTENT } from "../utils/constants";
-import { MAIL_PROVIDERS } from "../utils/mail";
-import { formatAsHtmlEmail, getTheme } from "../utils/theme";
+import SAMPLE_MARKDOWN_CONTENT from "../../assets/md-sample.md?raw";
+import Editor from "../../components/common/Editor";
+import Markdown from "../../components/common/Markdown";
+import { PLACEHOLDER_MARKDOWN_CONTENT } from "../../utils/constants";
+import { MAIL_PROVIDERS } from "../../utils/mail";
+import { formatAsHtmlEmail, getTheme } from "../../utils/theme";
 
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-markdown";
 
-const Compose: React.FC = () => {
+const ComposePage: React.FC = () => {
   const [editorValue, setEditorValue] = useState(PLACEHOLDER_MARKDOWN_CONTENT);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -181,4 +181,4 @@ const Compose: React.FC = () => {
   );
 };
 
-export default Compose;
+export default ComposePage;

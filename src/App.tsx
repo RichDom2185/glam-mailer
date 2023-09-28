@@ -12,7 +12,7 @@ import { Route, Routes } from "react-router-dom";
 import { sendHello } from "./api/general";
 import AppHeader from "./components/app/AppHeader";
 import AppNavigation from "./components/app/AppNavigation";
-import Compose from "./pages/Compose";
+import ComposePage from "./pages/ComposePage/ComposePage";
 import Drafts from "./pages/Drafts";
 import HomePage from "./pages/HomePage";
 import ThemeEditor from "./pages/ThemeEditor";
@@ -63,7 +63,7 @@ const App: React.FC = () => {
         <AppShell.Main>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/compose" element={<Compose />} />
+            <Route path="/compose" element={<ComposePage />} />
             <Route path="/drafts" element={<Drafts />} />
             <Route path="/edit-theme" element={<ThemeEditor />} />
           </Routes>
