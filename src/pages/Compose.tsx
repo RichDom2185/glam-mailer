@@ -84,16 +84,16 @@ const Compose: React.FC = () => {
           <Space h="md" />
           <Text>Unsure of what's supported? Load the example below!</Text>
           <Space h="md" />
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box style={{ display: "flex", justifyContent: "space-between" }}>
             <Button
-              rightIcon={<HiOutlineDocumentText />}
+              rightSection={<HiOutlineDocumentText />}
               onClick={() => setEditorValue(SAMPLE_MARKDOWN_CONTENT)}
             >
               Load Example
             </Button>
             <Button
               color="red"
-              rightIcon={<HiOutlineBackspace />}
+              rightSection={<HiOutlineBackspace />}
               onClick={() => setEditorValue("")}
             >
               Clear All
@@ -114,7 +114,7 @@ const Compose: React.FC = () => {
         <div>
           <Menu>
             <Menu.Target>
-              <Button rightIcon={<HiOutlinePaperAirplane />}>
+              <Button rightSection={<HiOutlinePaperAirplane />}>
                 Send Message
               </Button>
             </Menu.Target>
@@ -127,7 +127,9 @@ const Compose: React.FC = () => {
                   <Menu.Item
                     disabled // TODO: Remove when ready
                     key={provider.label}
-                    icon={<ProviderIcon color={false && provider.color} />}
+                    leftSection={
+                      <ProviderIcon color={false && provider.color} />
+                    }
                   >
                     {provider.label}
                   </Menu.Item>
@@ -136,7 +138,7 @@ const Compose: React.FC = () => {
               <Menu.Divider />
               <Menu.Label>Manual send</Menu.Label>
               <Menu.Item
-                icon={<HiOutlineDocumentDuplicate />}
+                leftSection={<HiOutlineDocumentDuplicate />}
                 onClick={() => handleCopyToClipboard()}
               >
                 Copy to clipboard
@@ -144,7 +146,7 @@ const Compose: React.FC = () => {
               <ReactToPrint
                 pageStyle=""
                 trigger={() => (
-                  <Menu.Item icon={<HiOutlineArrowTopRightOnSquare />}>
+                  <Menu.Item leftSection={<HiOutlineArrowTopRightOnSquare />}>
                     Save as PDF
                   </Menu.Item>
                 )}

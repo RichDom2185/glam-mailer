@@ -1,12 +1,11 @@
-import { Group, Header, Title } from "@mantine/core";
+import { AppShell, Group, Title } from "@mantine/core";
 import React from "react";
 import { Link } from "react-router-dom";
-import { HEADER_HEIGHT } from "../../utils/constants";
 
 const AppHeader: React.FC = () => {
   return (
-    <Header height={HEADER_HEIGHT}>
-      <Group sx={{ height: "100%" }} px={20} position="apart">
+    <AppShell.Header>
+      <Group style={{ height: "100%" }} px={20} justify="space-between">
         <Link
           to="/"
           // FIXME: Remove hardcoding of Tailwind prefix
@@ -15,7 +14,7 @@ const AppHeader: React.FC = () => {
           <Title>glam-mailer</Title>
         </Link>
       </Group>
-    </Header>
+    </AppShell.Header>
   );
 };
 

@@ -41,7 +41,7 @@ const AppSections: React.FC = () => {
             to={section.ref}
             active={location.pathname === section.ref}
             label={section.label}
-            icon={
+            leftSection={
               <ThemeIcon color={section.color} variant="light">
                 <Icon />
               </ThemeIcon>

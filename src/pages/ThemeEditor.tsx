@@ -62,16 +62,16 @@ const ThemeEditor: React.FC = () => {
             Documentation for building theme files will be coming soon.
           </Text>
           <Space h="md" />
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box style={{ display: "flex", justifyContent: "space-between" }}>
             <Button
-              rightIcon={<HiOutlineArrowPath />}
+              rightSection={<HiOutlineArrowPath />}
               onClick={() => setEditorValue(defaultTheme)}
             >
               Reset to Default
             </Button>
             <Button
               color="red"
-              rightIcon={<HiOutlineBackspace />}
+              rightSection={<HiOutlineBackspace />}
               onClick={() => setEditorValue("")}
             >
               Clear All
