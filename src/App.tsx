@@ -1,5 +1,12 @@
-import { AppShell, MantineProvider, createTheme } from "@mantine/core";
+import {
+  AppShell,
+  Burger,
+  Group,
+  MantineProvider,
+  createTheme,
+} from "@mantine/core";
 import "@mantine/core/styles.css";
+import { useDisclosure } from "@mantine/hooks";
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { sendHello } from "./api/general";
@@ -14,6 +21,9 @@ import { HEADER_HEIGHT } from "./utils/constants";
 const theme = createTheme({});
 
 const App: React.FC = () => {
+  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+  const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+
   useEffect(() => {
     sendHello();
   }, []);
@@ -22,13 +32,33 @@ const App: React.FC = () => {
     <MantineProvider theme={theme}>
       <AppShell
         padding="md"
-        navbar={{ width: { base: 300 }, breakpoint: "sm" }}
+        navbar={{
+          width: 300,
+          breakpoint: "sm",
+          collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+        }}
         header={{ height: HEADER_HEIGHT }}
         styles={(theme) => ({
           main: { backgroundColor: theme.colors.gray[0] },
         })}
       >
-        <AppHeader />
+        <AppShell.Header>
+          <Group h="100%" px="md">
+            <Burger
+              opened={mobileOpened}
+              onClick={toggleMobile}
+              hiddenFrom="sm"
+              size="sm"
+            />
+            <Burger
+              opened={desktopOpened}
+              onClick={toggleDesktop}
+              visibleFrom="sm"
+              size="sm"
+            />
+            <AppHeader />
+          </Group>
+        </AppShell.Header>
         <AppNavigation />
         <AppShell.Main>
           <Routes>
