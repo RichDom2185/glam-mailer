@@ -10,19 +10,19 @@ import { Link, useLocation } from "react-router-dom";
 const sections = [
   {
     icon: HiOutlineEnvelope,
-    color: "green",
+    color: "#15803d", // Tailwind green-700
     label: "Compose",
     ref: "/compose",
   },
   {
     icon: HiOutlineDocumentDuplicate,
-    color: "orange",
+    color: "#c2410c", // Tailwind orange-700
     label: "Drafts",
     ref: "/drafts",
   },
   {
     icon: HiOutlinePaintBrush,
-    color: "cyan",
+    color: "#0e7490", // Tailwind cyan-700
     label: "Theme Editor",
     ref: "/edit-theme",
   },
@@ -41,6 +41,11 @@ const AppSections: React.FC = () => {
             to={section.ref}
             active={location.pathname === section.ref}
             label={section.label}
+            color={section.color}
+            styles={(theme) => ({
+              root: { borderRadius: theme.radius.md },
+              label: { fontWeight: 500 },
+            })}
             leftSection={
               <ThemeIcon
                 color={section.color}
