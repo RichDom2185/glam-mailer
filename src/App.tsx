@@ -17,6 +17,7 @@ import Drafts from "./pages/Drafts";
 import HomePage from "./pages/HomePage";
 import ThemeEditor from "./pages/ThemeEditor";
 import { HEADER_HEIGHT } from "./utils/constants";
+import { useSideContent } from "./utils/sideContent";
 
 const theme = createTheme({});
 
@@ -28,6 +29,9 @@ const App: React.FC = () => {
     sendHello();
   }, []);
 
+  // TODO: Get this from the store
+  const { sideContent: aside } = useSideContent();
+
   return (
     <MantineProvider theme={theme}>
       <AppShell
@@ -38,6 +42,15 @@ const App: React.FC = () => {
           collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
         }}
         header={{ height: HEADER_HEIGHT }}
+        aside={
+          aside
+            ? {
+                width: 500,
+                breakpoint: "lg",
+                collapsed: { desktop: false, mobile: true },
+              }
+            : undefined
+        }
         styles={(theme) => ({
           main: { backgroundColor: theme.colors.gray[0] },
         })}
@@ -68,6 +81,7 @@ const App: React.FC = () => {
             <Route path="/edit-theme" element={<ThemeEditor />} />
           </Routes>
         </AppShell.Main>
+        {aside && <AppShell.Aside p="md">{aside}</AppShell.Aside>}
       </AppShell>
     </MantineProvider>
   );
