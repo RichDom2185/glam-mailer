@@ -31,7 +31,8 @@
     "remark-math": "^5.1.1",
     "remark-smartypants": "^2.0.0",
     "remark-truncate-links": "^1.0.3",
-    "yaml": "^2.2.2"
+    "yaml": "^2.2.2",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
