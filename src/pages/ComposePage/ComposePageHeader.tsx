@@ -4,7 +4,7 @@ import { HiOutlinePencilSquare } from "react-icons/hi2";
 
 const ComposePageHeader: React.FC = () => {
   return (
-    <Card shadow="lg">
+    <Card shadow="lg" radius="md">
       <Title order={2} mb="lg">
         <Group>
           <HiOutlinePencilSquare /> Let's create an email!
@@ -12,10 +12,12 @@ const ComposePageHeader: React.FC = () => {
       </Title>
       <Text mb="sm">
         Simply type your message below. Focus on the content – don't worry about
-        styling, we will theme it. You can utilize Markdown to add formatting
-        and structure to your message.
+        styling, glam-mailer takes care of it. You can utilize Markdown to add
+        formatting and structure to your message.
       </Text>
-      <Text>Unsure of what's supported? Load the example below!</Text>
+      <Text>
+        Use the "Load Example" button below to explore the available features.
+      </Text>
     </Card>
   );
 };
