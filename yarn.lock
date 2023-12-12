@@ -869,9 +869,9 @@ abab@^2.0.6:
   integrity sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==
 
 ace-builds@^1.28.0:
-  version "1.28.0"
-  resolved "https://registry.yarnpkg.com/ace-builds/-/ace-builds-1.28.0.tgz#b606702c33dec470393531d9808a1082add8302b"
-  integrity sha512-wkJp+Wz8MRHtCVdt65L/jPFLAQ0iqJZ2EeD2XWOvKGbIi4mZNwHlpHRLRB8ZnQ07VoiB0TLFWwIjjm2FL9gUcQ==
+  version "1.32.1"
+  resolved "https://registry.yarnpkg.com/ace-builds/-/ace-builds-1.32.1.tgz#07b19ab16f7c72f2ff901072dc1e4a463a864d23"
+  integrity sha512-UuJLPoONqxbEaJTGff40fRTM0FNHRMe5iF3zuy6oWNnfSpkKe/Reqae3n9Cc49/yQ7Dmwdh5eT5fW8i4WxsvnA==
 
 ace-builds@^1.4.14:
   version "1.21.1"
