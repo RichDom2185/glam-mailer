@@ -1,16 +1,20 @@
+import { useMantineTheme } from "@mantine/core";
 import React from "react";
-import { IAceEditorProps } from "react-ace";
+import AceEditor, { IAceEditorProps } from "react-ace";
 
-import AceEditor from "react-ace";
-import { HEADER_HEIGHT } from "../../utils/constants";
+import "ace-builds/src-noconflict/theme-github";
 
 const Editor: React.FC<IAceEditorProps> = (props) => {
+  const theme = useMantineTheme();
+
   return (
     <AceEditor
-      style={{ position: "sticky", top: HEADER_HEIGHT + 16 }}
+      style={{ fontFamily: theme.fontFamilyMonospace }}
+      theme="github"
       setOptions={{ cursorStyle: "smooth" }}
-      fontSize={13}
+      fontSize={theme.fontSizes.md}
       width="100%"
+      height="600px"
       wrapEnabled
       {...props}
     />

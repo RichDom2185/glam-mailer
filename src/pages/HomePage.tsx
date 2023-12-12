@@ -1,13 +1,4 @@
-import {
-  Box,
-  Button,
-  Code,
-  Flex,
-  Group,
-  Space,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Box, Button, Code, Flex, Group, Text, Title } from "@mantine/core";
 import React from "react";
 import { HiOutlinePencil } from "react-icons/hi2";
 import { TbTable } from "react-icons/tb";
@@ -34,9 +25,9 @@ const features: React.ReactNode[] = [
       {
         styles: {
           "*": [
-            "tw-mt-[-7px]",
+            "tw-mt-[-10px]",
             "tw-mr-[-9px]",
-            "tw-mb-[-11px]",
+            "tw-mb-[-18px]",
             "tw-ml-[-4px]",
           ],
         },
@@ -45,7 +36,7 @@ const features: React.ReactNode[] = [
   >
     {"```plantuml\ncard UML\n```"}
   </Markdown>,
-  <Code color="blue" fz="md">
+  <Code color="blue.0" fz="md">
     code
   </Code>,
   "⭐ Emojis ✨",
@@ -64,36 +55,32 @@ const features: React.ReactNode[] = [
 const HomePage: React.FC = () => {
   return (
     <Box maw={840} mx="auto">
-      <Title
-        // FIXME: Remove hardcoding of Tailwind prefix
-        className="tw-drop-shadow-md"
-        order={1}
-        variant="gradient"
-        // FIXME: Restore gradient
-        // gradient={{ from: "#862E9C", to: "#4DABF7", deg: 30 }}
-        my="xl"
-        ta="center"
-        fz="3rem"
-      >
-        So you want to create beautiful emails?
+      <Title my="xl" ta="center" fz="3rem" mb="lg">
+        <Text
+          size="1em"
+          lh={1.2}
+          fw="bold"
+          variant="gradient"
+          gradient={{ from: "#862E9C", to: "#4DABF7", deg: 30 }}
+        >
+          Do you want to create beautiful, professional emails?
+        </Text>
       </Title>
-      <Space h="xl" />
       <Text
         fz="lg"
         // FIXME: Remove hardcoding of Tailwind prefix
         className="tw-text-slate-700"
         fs="italic"
         ta="center"
+        my="xl"
       >
         <strong>glam-mailer</strong> is an app to generate beautiful emails
         using extended Markdown. Perfect for students, professionals, or anyone
         who wants to make their emails more unique.
       </Text>
-      <Space h="md" />
       <Text fz="1.8rem" ta="center" my="xl">
         Focus on what matters – content.
       </Text>
-      <Space h="md" />
       <Flex
         gap="sm"
         justify="center"
@@ -101,13 +88,13 @@ const HomePage: React.FC = () => {
         maw={500}
         align="center"
         mx="auto"
+        my="xl"
       >
         {features.map((feature) => (
           <Tag content={feature} />
         ))}
       </Flex>
-      <Space h="xl" />
-      <Box maw={600} mx="auto">
+      <Box maw={600} mx="auto" my="xl">
         <Text
           fz="lg"
           // FIXME: Remove hardcoding of Tailwind prefix
@@ -127,28 +114,22 @@ const HomePage: React.FC = () => {
           .
         </Text>
       </Box>
-      <Space h="md" />
       <Box
         w="min-content"
         mx="auto"
-        my="sm"
+        my="xl"
         style={{ display: "flex", gap: 12, justifyContent: "space-between" }}
       >
         <Link to="/compose">
           <Button
-            variant="gradient"
-            gradient={{ from: "#4DABF7", to: "green" }}
+            variant="filled"
+            bg="#862E9C"
             leftSection={<HiOutlinePencil />}
           >
             Start Writing
           </Button>
         </Link>
-        <Button
-          variant="default"
-          onClick={() => {
-            alert("Coming soon!");
-          }}
-        >
+        <Button variant="default" onClick={() => alert("Coming soon!")}>
           Browse Themes
         </Button>
       </Box>

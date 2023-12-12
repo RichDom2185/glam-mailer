@@ -1,5 +1,6 @@
 import {
   Button,
+  Card,
   Divider,
   Group,
   Notification,
@@ -11,13 +12,21 @@ import { HiOutlineBackspace, HiOutlineDocumentText } from "react-icons/hi2";
 import SAMPLE_MARKDOWN_CONTENT from "../../assets/md-sample.md?raw";
 import Editor from "../../components/common/Editor";
 import Markdown from "../../components/common/Markdown";
-import { PLACEHOLDER_MARKDOWN_CONTENT } from "../../utils/constants";
+import {
+  HEADER_HEIGHT,
+  PLACEHOLDER_MARKDOWN_CONTENT,
+} from "../../utils/constants";
 import { getTheme } from "../../utils/theme";
 
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-markdown";
 import ComposePageHeader from "./ComposePageHeader";
 import ComposePageMenu from "./ComposePageMenu";
+
+const minimalButtonProps = {
+  variant: "subtle",
+  px: "xs",
+};
 
 const ComposePage: React.FC = () => {
   const [editorValue, setEditorValue] = useState(PLACEHOLDER_MARKDOWN_CONTENT);
@@ -31,32 +40,35 @@ const ComposePage: React.FC = () => {
       <SimpleGrid cols={2}>
         <div>
           <ComposePageHeader />
-          <Group mt="md" justify="space-between">
-            <Button
-              rightSection={<HiOutlineDocumentText />}
-              onClick={() => setEditorValue(SAMPLE_MARKDOWN_CONTENT)}
-            >
-              Load Example
-            </Button>
-            <Button
-              color="red"
-              rightSection={<HiOutlineBackspace />}
-              onClick={() => setEditorValue("")}
-            >
-              Clear All
-            </Button>
-          </Group>
-          <Divider
-            my="sm"
-            variant="dashed"
-            label="Write your email below"
-            labelPosition="center"
-          />
-          <Editor
-            mode="markdown"
-            onChange={setEditorValue}
-            value={editorValue}
-          />
+          <div style={{ position: "sticky", top: HEADER_HEIGHT + 16 }}>
+            <Card shadow="lg" radius="md" p="xs" my="sm">
+              <Group justify="space-between">
+                <Button
+                  {...minimalButtonProps}
+                  rightSection={<HiOutlineDocumentText />}
+                  onClick={() => setEditorValue(SAMPLE_MARKDOWN_CONTENT)}
+                >
+                  Load Example
+                </Button>
+                <Button
+                  {...minimalButtonProps}
+                  color="red"
+                  rightSection={<HiOutlineBackspace />}
+                  onClick={() => setEditorValue("")}
+                >
+                  Clear All
+                </Button>
+              </Group>
+            </Card>
+            <Card shadow="lg" radius="md">
+              <Editor
+                mode="markdown"
+                onChange={setEditorValue}
+                value={editorValue}
+                showGutter={false}
+              />
+            </Card>
+          </div>
         </div>
         <div>
           <ComposePageMenu sourceRef={ref} loadingCallback={setIsFormatting} />
