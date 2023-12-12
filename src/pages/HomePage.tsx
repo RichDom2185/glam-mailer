@@ -23,7 +23,7 @@ const features: React.ReactNode[] = [
   >
     {"$\\text{LaTeX}$"}
   </Markdown>,
-  <Group spacing={6}>
+  <Group gap={6}>
     Tables
     <TbTable />
   </Group>,
@@ -69,7 +69,8 @@ const HomePage: React.FC = () => {
         className="tw-drop-shadow-md"
         order={1}
         variant="gradient"
-        gradient={{ from: "#862E9C", to: "#4DABF7", deg: 30 }}
+        // FIXME: Restore gradient
+        // gradient={{ from: "#862E9C", to: "#4DABF7", deg: 30 }}
         my="xl"
         ta="center"
         fz="3rem"
@@ -131,13 +132,13 @@ const HomePage: React.FC = () => {
         w="min-content"
         mx="auto"
         my="sm"
-        sx={{ display: "flex", gap: 12, justifyContent: "space-between" }}
+        style={{ display: "flex", gap: 12, justifyContent: "space-between" }}
       >
         <Link to="/compose">
           <Button
             variant="gradient"
             gradient={{ from: "#4DABF7", to: "green" }}
-            leftIcon={<HiOutlinePencil />}
+            leftSection={<HiOutlinePencil />}
           >
             Start Writing
           </Button>
