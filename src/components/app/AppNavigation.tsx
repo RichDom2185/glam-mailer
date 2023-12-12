@@ -6,8 +6,8 @@ const AppNavigation: React.FC = () => {
   const theme = useMantineTheme();
 
   return (
-    <AppShell.Navbar p="xs">
-      <AppShell.Section grow mt="xs">
+    <AppShell.Navbar p="md">
+      <AppShell.Section grow>
         <AppSections />
       </AppShell.Section>
       <AppShell.Section>
