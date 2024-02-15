@@ -1,7 +1,8 @@
 import remarkSimplePlantUML from "@akebifiky/remark-simple-plantuml";
 import React, { useMemo } from "react";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import ReactMarkdown from "react-markdown";
 import addClasses from "rehype-add-classes";
+import rehypeExternalLinks from "rehype-external-links";
 import rehypeHighlight from "rehype-highlight";
 import rehypeMathjax from "rehype-mathjax";
 import remarkGemoji from "remark-gemoji";
@@ -55,8 +56,11 @@ const Markdown: React.FC<Props> = ({ theme, containerRef, children }) => {
           rehypeMathjax,
           [rehypeHighlight, {}],
           [addClasses, classesToAdd],
+          [
+            rehypeExternalLinks,
+            { target: "_blank", rel: ["nofollow", "noopener", "noreferrer"] },
+          ],
         ]}
-        linkTarget="_blank"
         children={children}
       />
     </div>
