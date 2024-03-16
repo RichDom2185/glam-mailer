@@ -11,7 +11,7 @@ import remarkMath from "remark-math";
 import remarkSmartypants from "remark-smartypants";
 import { remarkTruncateLinks } from "remark-truncate-links";
 
-import { Theme, getClassMappingFrom, getTheme } from "../../utils/theme";
+import { Theme, defaultTheme, getClassMappingFrom } from "../../utils/theme";
 
 type Props = {
   theme: Theme;
@@ -32,16 +32,12 @@ const remarkPlugins = [
 const Markdown: React.FC<Props> = ({ theme, containerRef, children }) => {
   const classesToAdd = useMemo(() => {
     try {
-      const classesToAdd: {
-        [key: string]: string;
-      } = getClassMappingFrom(theme);
+      const classesToAdd = getClassMappingFrom(theme);
       return classesToAdd;
     } catch {
       // FIXME: Handle this more gracefully inside getTheme
       console.error("An error has occurred, using default theme");
-      const classesToAdd: {
-        [key: string]: string;
-      } = getClassMappingFrom(getTheme());
+      const classesToAdd = getClassMappingFrom(defaultTheme);
       return classesToAdd;
     }
   }, [theme]);

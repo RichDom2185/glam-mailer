@@ -1,6 +1,6 @@
 import { Components } from "react-markdown";
 import { parse } from "yaml";
-import defaultTheme from "../themes/default.yaml?raw";
+import defaultThemeFile from "../themes/default.yaml?raw";
 
 import axios from "axios";
 import {
@@ -20,10 +20,11 @@ export type Theme = {
   };
 };
 
-// TODO: Use redux
-export const getTheme = (yamlInput: string = defaultTheme): Theme => {
-  return parse(yamlInput) as Theme;
+export { defaultThemeFile };
+export const parseTheme = (yaml: string): Theme => {
+  return parse(yaml);
 };
+export const defaultTheme = parseTheme(defaultThemeFile);
 
 // Precondition: `className` is not conditional
 const generatePrefixedClass = (className: string): string => {

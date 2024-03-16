@@ -16,10 +16,10 @@ import {
   HEADER_HEIGHT,
   PLACEHOLDER_MARKDOWN_CONTENT,
 } from "../../utils/constants";
-import { getTheme } from "../../utils/theme";
 
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-markdown";
+import { defaultTheme } from "../../utils/theme";
 import ComposePageHeader from "./ComposePageHeader";
 import ComposePageMenu from "./ComposePageMenu";
 
@@ -34,7 +34,8 @@ const ComposePage: React.FC = () => {
 
   const [isFormatting, setIsFormatting] = useState(false);
 
-  const theme = getTheme();
+  // TODO: Use a selector
+  const theme = defaultTheme;
   return (
     <div>
       <SimpleGrid cols={2}>
