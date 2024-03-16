@@ -17,8 +17,6 @@ import {
   PLACEHOLDER_MARKDOWN_CONTENT,
 } from "../../utils/constants";
 
-import "ace-builds/src-noconflict/ext-language_tools";
-import "ace-builds/src-noconflict/mode-markdown";
 import { defaultTheme } from "../../utils/theme";
 import ComposePageHeader from "./ComposePageHeader";
 import ComposePageMenu from "./ComposePageMenu";

@@ -2,7 +2,7 @@ import { useMantineTheme } from "@mantine/core";
 import React from "react";
 import AceEditor, { IAceEditorProps } from "react-ace";
 
-import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/esm-resolver";
 
 const Editor: React.FC<IAceEditorProps> = (props) => {
   const theme = useMantineTheme();

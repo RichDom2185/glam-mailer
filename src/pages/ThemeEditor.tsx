@@ -21,9 +21,6 @@ import Editor from "../components/common/Editor";
 import Markdown from "../components/common/Markdown";
 import { Theme, defaultThemeFile, parseTheme } from "../utils/theme";
 
-import "ace-builds/src-noconflict/ext-language_tools";
-import "ace-builds/src-noconflict/mode-yaml";
-
 const ThemeEditor: React.FC = () => {
   const [editorValue, setEditorValue] = useState(defaultThemeFile);
   const [previewType, setPreviewType] = useState<"sample" | "features">(
