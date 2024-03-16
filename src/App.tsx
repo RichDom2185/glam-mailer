@@ -8,14 +8,10 @@ import {
 import "@mantine/core/styles.css";
 import { useDisclosure } from "@mantine/hooks";
 import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { sendHello } from "./api/general";
 import AppHeader from "./components/app/AppHeader";
 import AppNavigation from "./components/app/AppNavigation";
-import ComposePage from "./pages/ComposePage/ComposePage";
-import Drafts from "./pages/Drafts";
-import HomePage from "./pages/HomePage";
-import ThemeEditor from "./pages/ThemeEditor";
 import { HEADER_HEIGHT } from "./utils/constants";
 
 const theme = createTheme({});
@@ -61,12 +57,7 @@ const App: React.FC = () => {
         </AppShell.Header>
         <AppNavigation />
         <AppShell.Main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/compose" element={<ComposePage />} />
-            <Route path="/drafts" element={<Drafts />} />
-            <Route path="/edit-theme" element={<ThemeEditor />} />
-          </Routes>
+          <Outlet />
         </AppShell.Main>
       </AppShell>
     </MantineProvider>

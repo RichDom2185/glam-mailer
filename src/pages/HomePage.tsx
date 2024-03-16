@@ -137,4 +137,8 @@ const HomePage: React.FC = () => {
   );
 };
 
+// For lazy loading
+export const Component = HomePage;
+Component.displayName = "HomePage";
+
 export default HomePage;

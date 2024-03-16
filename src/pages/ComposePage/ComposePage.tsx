@@ -99,4 +99,8 @@ const ComposePage: React.FC = () => {
   );
 };
 
+// For lazy loading
+export const Component = ComposePage;
+Component.displayName = "ComposePage";
+
 export default ComposePage;

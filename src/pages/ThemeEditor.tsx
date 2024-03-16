@@ -114,4 +114,8 @@ const ThemeEditor: React.FC = () => {
   );
 };
 
+// For lazy loading
+export const Component = ThemeEditor;
+Component.displayName = "ThemeEditor";
+
 export default ThemeEditor;
