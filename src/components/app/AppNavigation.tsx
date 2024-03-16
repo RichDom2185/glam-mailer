@@ -18,7 +18,9 @@ const AppNavigation: React.FC = () => {
           }}
         >
           <Text size="sm" c="dimmed" ta="center">
-            Copyright &copy; 2023 Richard Dominick
+            Copyright &copy; 2023-2024
+            <br />
+            Richard Dominick
           </Text>
         </Box>
       </AppShell.Section>
