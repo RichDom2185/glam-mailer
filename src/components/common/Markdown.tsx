@@ -1,5 +1,5 @@
 import remarkSimplePlantUML from "@akebifiky/remark-simple-plantuml";
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import addClasses from "rehype-add-classes";
 import rehypeExternalLinks from "rehype-external-links";
@@ -11,10 +11,10 @@ import remarkMath from "remark-math";
 import remarkSmartypants from "remark-smartypants";
 import { remarkTruncateLinks } from "remark-truncate-links";
 
-import { Theme, defaultTheme, getClassMappingFrom } from "../../utils/theme";
+import { Theme, getClassMappingFrom } from "../../utils/theme";
 
 type Props = {
-  theme: Theme;
+  theme?: Theme;
   containerRef?: React.RefObject<HTMLDivElement>;
   children: string;
 };
@@ -30,16 +30,12 @@ const remarkPlugins = [
 ];
 
 const Markdown: React.FC<Props> = ({ theme, containerRef, children }) => {
-  const classesToAdd = useMemo(() => {
-    try {
-      const classesToAdd = getClassMappingFrom(theme);
-      return classesToAdd;
-    } catch {
-      // FIXME: Handle this more gracefully inside getTheme
-      console.error("An error has occurred, using default theme");
-      const classesToAdd = getClassMappingFrom(defaultTheme);
-      return classesToAdd;
+  const [classesToAdd, setClassesToAdd] = useState<Record<string, string>>({});
+  useEffect(() => {
+    if (!theme) {
+      return;
     }
+    setClassesToAdd(getClassMappingFrom(theme));
   }, [theme]);
 
   return (

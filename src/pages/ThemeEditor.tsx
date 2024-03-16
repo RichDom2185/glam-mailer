@@ -19,12 +19,7 @@ import FEATURE_MARKDOWN_CONTENT from "../assets/md-features.md?raw";
 import SAMPLE_MARKDOWN_CONTENT from "../assets/md-sample.md?raw";
 import Editor from "../components/common/Editor";
 import Markdown from "../components/common/Markdown";
-import {
-  Theme,
-  defaultTheme,
-  defaultThemeFile,
-  parseTheme,
-} from "../utils/theme";
+import { Theme, defaultThemeFile, parseTheme } from "../utils/theme";
 
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-yaml";
@@ -34,7 +29,7 @@ const ThemeEditor: React.FC = () => {
   const [previewType, setPreviewType] = useState<"sample" | "features">(
     "features"
   );
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
+  const [theme, setTheme] = useState<Theme>();
   useEffect(() => {
     try {
       setTheme(parseTheme(editorValue));
