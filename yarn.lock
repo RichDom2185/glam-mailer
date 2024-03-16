@@ -196,17 +196,10 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/runtime@^7.12.5", "@babel/runtime@^7.18.3":
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.18.3", "@babel/runtime@^7.20.13":
   version "7.24.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.24.0.tgz#584c450063ffda59697021430cb47101b085951e"
   integrity sha512-Chk32uHMg6TnQdvw2e9IlqPpFX/6NLuK0Ys2PqLb7/gL5uFn9mXvK715FGLlOLQrcO4qIkNHkvPGktzzXexsFw==
-  dependencies:
-    regenerator-runtime "^0.14.0"
-
-"@babel/runtime@^7.20.13":
-  version "7.23.9"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.23.9.tgz#47791a15e4603bb5f905bc0753801cf21d6345f7"
-  integrity sha512-0CX6F+BI2s9dkUqr08KFrAIZgNFj75rdBU/DjCyYLIaV/quFjkk6T+EJ2LkZHyZTbEV4L5p97mNkUsHl2wLFAw==
   dependencies:
     regenerator-runtime "^0.14.0"
 
@@ -235,16 +228,7 @@
     debug "^4.3.1"
     globals "^11.1.0"
 
-"@babel/types@^7.0.0", "@babel/types@^7.20.7", "@babel/types@^7.22.5", "@babel/types@^7.23.0", "@babel/types@^7.23.6":
-  version "7.23.6"
-  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.23.6.tgz#be33fdb151e1f5a56877d704492c240fc71c7ccd"
-  integrity sha512-+uarb83brBzPKN38NX1MkB6vb6+mwvR6amUulqAE7ccQw1pEl+bCia9TbdG1lsnFP7lZySvUn37CHyXQdfTwzg==
-  dependencies:
-    "@babel/helper-string-parser" "^7.23.4"
-    "@babel/helper-validator-identifier" "^7.22.20"
-    to-fast-properties "^2.0.0"
-
-"@babel/types@^7.22.15":
+"@babel/types@^7.0.0", "@babel/types@^7.20.7", "@babel/types@^7.22.15", "@babel/types@^7.22.5", "@babel/types@^7.23.0", "@babel/types@^7.23.6":
   version "7.24.0"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.24.0.tgz#3b951f435a92e7333eba05b7566fd297960ea1bf"
   integrity sha512-+j7a5c253RfKh8iABBhywc8NSfP5LURe7Uh4qpsh6jc+aLJguvmIUBdjSdEMQv2bENrCR5MfRdjGo7vzS/ob7w==
@@ -931,15 +915,10 @@
     "@types/babel__core" "^7.20.5"
     react-refresh "^0.14.0"
 
-ace-builds@^1.32.7:
+ace-builds@^1.32.7, ace-builds@^1.4.14:
   version "1.32.7"
   resolved "https://registry.yarnpkg.com/ace-builds/-/ace-builds-1.32.7.tgz#c095f2b8989bce429e08cdf0e846890bf0e7eb98"
   integrity sha512-ziv35kaYELFw4suWlotz/Xsl1/1LhWAbwFoD3zIgCgP9gXGECEsAM4GhiB0T0xZdmQjyv6hmAzO280g0+n4vGw==
-
-ace-builds@^1.4.14:
-  version "1.28.0"
-  resolved "https://registry.yarnpkg.com/ace-builds/-/ace-builds-1.28.0.tgz#b606702c33dec470393531d9808a1082add8302b"
-  integrity sha512-wkJp+Wz8MRHtCVdt65L/jPFLAQ0iqJZ2EeD2XWOvKGbIi4mZNwHlpHRLRB8ZnQ07VoiB0TLFWwIjjm2FL9gUcQ==
 
 acorn-jsx@^5.3.2:
   version "5.3.2"
