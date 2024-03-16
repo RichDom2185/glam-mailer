@@ -90,8 +90,8 @@ const HomePage: React.FC = () => {
         mx="auto"
         my="xl"
       >
-        {features.map((feature) => (
-          <Tag content={feature} />
+        {features.map((feature, i) => (
+          <Tag key={i} content={feature} />
         ))}
       </Flex>
       <Box maw={600} mx="auto" my="xl">
