@@ -1,31 +1,24 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Group,
-  Select,
-  SimpleGrid,
-  Space,
-  Text,
-  Title,
-} from "@mantine/core";
-import React, { useEffect, useState } from "react";
-import {
-  HiOutlineArrowPath,
-  HiOutlineBackspace,
-  HiOutlinePaintBrush,
-} from "react-icons/hi2";
+import { Button, Card, Group, Select, SimpleGrid } from "@mantine/core";
+import React, { useCallback, useEffect, useState } from "react";
+import { HiOutlineArrowPath, HiOutlineBackspace } from "react-icons/hi2";
 import FEATURE_MARKDOWN_CONTENT from "../assets/md-features.md?raw";
 import SAMPLE_MARKDOWN_CONTENT from "../assets/md-sample.md?raw";
 import Editor from "../components/common/Editor";
 import Markdown from "../components/common/Markdown";
+import StickyToolbar from "../components/common/StickyToolbar";
 import { Theme, defaultThemeFile, parseTheme } from "../utils/theme";
+import ThemeEditorHeader from "./ThemeEditor/ThemeEditorHeader";
+
+const previewTypes = [
+  { value: "features", label: "Preview entire Markdown syntax" },
+  { value: "sample", label: "Preview a sample email" },
+];
 
 const ThemeEditor: React.FC = () => {
   const [editorValue, setEditorValue] = useState(defaultThemeFile);
-  const [previewType, setPreviewType] = useState<"sample" | "features">(
-    "features"
-  );
+  const [previewType, setPreviewType] =
+    useState<(typeof previewTypes)[number]["value"]>("features");
+
   const [theme, setTheme] = useState<Theme>();
   useEffect(() => {
     try {
@@ -35,74 +28,67 @@ const ThemeEditor: React.FC = () => {
     }
   }, [editorValue]);
 
+  const handleResetTheme = useCallback(() => {
+    const confirm = window.confirm(
+      "Are you sure you want to reset the theme to default?"
+    );
+    if (confirm) {
+      setEditorValue(defaultThemeFile);
+    }
+  }, []);
+  const handleClearTheme = useCallback(() => {
+    const confirm = window.confirm(
+      "Are you sure you want to clear the editor?"
+    );
+    if (confirm) {
+      setEditorValue("");
+    }
+  }, []);
+
   return (
     <div>
+      <ThemeEditorHeader />
+      <StickyToolbar>
+        <Group justify="space-between" wrap="nowrap">
+          <Button
+            variant="default"
+            leftSection={<HiOutlineArrowPath />}
+            onClick={handleResetTheme}
+          >
+            Reset to Default
+          </Button>
+          <Button
+            variant="light"
+            color="red"
+            rightSection={<HiOutlineBackspace />}
+            onClick={handleClearTheme}
+          >
+            Clear All
+          </Button>
+        </Group>
+      </StickyToolbar>
       <SimpleGrid cols={2}>
-        <div>
-          <Title order={2}>
-            <Group>
-              <HiOutlinePaintBrush />
-              Let us create a theme!
-            </Group>
-          </Title>
-          <Space h="md" />
-          <Text>
-            Start by writing your theme following the YAML template below. The
-            default theme has been loaded for you. Feel free to customize it, or
-            start from a blank slate; your theme will be visible on the right.
-          </Text>
-          <Space h="md" />
-          <Text>
-            Documentation for building theme files will be coming soon.
-          </Text>
-          <Space h="md" />
-          <Box style={{ display: "flex", justifyContent: "space-between" }}>
-            <Button
-              rightSection={<HiOutlineArrowPath />}
-              onClick={() => setEditorValue(defaultThemeFile)}
-            >
-              Reset to Default
-            </Button>
-            <Button
-              color="red"
-              rightSection={<HiOutlineBackspace />}
-              onClick={() => setEditorValue("")}
-            >
-              Clear All
-            </Button>
-          </Box>
-          <Divider
-            my="sm"
-            variant="dashed"
-            label="Write your theme below"
-            labelPosition="center"
+        <Card mih={200} shadow="sm">
+          <Editor
+            height="100%"
+            mode="yaml"
+            onChange={setEditorValue}
+            value={editorValue}
           />
-          <Editor mode="yaml" onChange={setEditorValue} value={editorValue} />
-        </div>
-        <div>
+        </Card>
+        <Card shadow="sm">
           <Select
             value={previewType}
             label="Preview type"
-            // TODO: Investigate if `any` can be removed here
-            // TODO: Refactor
-            onChange={(e: any) => setPreviewType(e)}
-            data={[
-              { value: "features", label: "List of supported features" },
-              { value: "sample", label: "Sample document" },
-            ]}
-          />
-          <Divider
-            my="sm"
-            variant="dashed"
-            label="Theme preview"
-            labelPosition="center"
+            onChange={(e) => e && setPreviewType(e)}
+            data={previewTypes}
           />
           <Markdown theme={theme}>
             {previewType === "features"
               ? FEATURE_MARKDOWN_CONTENT
               : SAMPLE_MARKDOWN_CONTENT}
           </Markdown>
-        </div>
+        </Card>
       </SimpleGrid>
     </div>
   );
