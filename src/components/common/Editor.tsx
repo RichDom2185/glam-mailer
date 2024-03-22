@@ -10,7 +10,7 @@ const Editor: React.FC<IAceEditorProps> = (props) => {
   return (
     <AceEditor
       style={{ fontFamily: theme.fontFamilyMonospace }}
-      theme="github"
+      theme="tomorrow"
       setOptions={{ cursorStyle: "smooth" }}
       fontSize={theme.fontSizes.md}
       width="100%"

@@ -97,7 +97,6 @@ const ComposePage: React.FC = () => {
             value={editorValue}
             showGutter={false}
             setOptions={{ highlightActiveLine: false }}
-            theme="tomorrow"
           />
         </Card>
         <Card shadow="sm">
