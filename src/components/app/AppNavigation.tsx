@@ -1,5 +1,15 @@
-import { AppShell, Box, Text, rem, useMantineTheme } from "@mantine/core";
+import {
+  AppShell,
+  Box,
+  Button,
+  Group,
+  Text,
+  rem,
+  useMantineTheme,
+} from "@mantine/core";
 import React from "react";
+import { RiGithubFill, RiGlobalLine, RiLinkedinBoxFill } from "react-icons/ri";
+import { GITHUB_URL, LINKEDIN_URL, WEBSITE_URL } from "../../utils/constants";
 import AppSections from "./AppSections";
 
 type Props = {
@@ -17,7 +27,7 @@ const AppNavigation: React.FC<Props> = ({ handleCloseDrawer }) => {
       <AppShell.Section>
         <Box
           style={{
-            paddingTop: theme.spacing.sm,
+            paddingBlock: theme.spacing.sm,
             borderTop: `${rem(1)} solid ${theme.colors.gray[2]}`,
           }}
         >
@@ -27,6 +37,43 @@ const AppNavigation: React.FC<Props> = ({ handleCloseDrawer }) => {
             Richard Dominick
           </Text>
         </Box>
+        <Group justify="center">
+          <Button.Group>
+            <Button
+              component="a"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={GITHUB_URL}
+              leftSection={<RiGithubFill />}
+              variant="default"
+              size="compact-xs"
+            >
+              GitHub
+            </Button>
+            <Button
+              component="a"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={WEBSITE_URL}
+              leftSection={<RiGlobalLine />}
+              variant="default"
+              size="compact-xs"
+            >
+              Website
+            </Button>
+            <Button
+              component="a"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={LINKEDIN_URL}
+              leftSection={<RiLinkedinBoxFill />}
+              variant="default"
+              size="compact-xs"
+            >
+              LinkedIn
+            </Button>
+          </Button.Group>
+        </Group>
       </AppShell.Section>
     </AppShell.Navbar>
   );

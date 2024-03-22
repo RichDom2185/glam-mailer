@@ -17,3 +17,7 @@ Best regards,
 `;
 
 export const HEADER_HEIGHT = 60 as const;
+
+export const GITHUB_URL: string = import.meta.env.VITE_GITHUB_URL ?? "#";
+export const WEBSITE_URL: string = import.meta.env.VITE_WEBSITE_URL ?? "#";
+export const LINKEDIN_URL: string = import.meta.env.VITE_LINKEDIN_URL ?? "#";
