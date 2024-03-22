@@ -13,10 +13,7 @@ styles:
   .markdown-body:
     - mx-auto
     - max-w-3xl
-    - my-2
     - bg-white
-    - rounded-lg
-    - drop-shadow-xl
     - py-4
     - px-6
     - print:drop-shadow-none

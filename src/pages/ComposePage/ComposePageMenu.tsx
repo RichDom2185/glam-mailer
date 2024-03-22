@@ -45,7 +45,9 @@ const ComposePageMenu: React.FC<Props> = ({ sourceRef, loadingCallback }) => {
   return (
     <Menu>
       <Menu.Target>
-        <Button rightSection={<HiOutlinePaperAirplane />}>Send Message</Button>
+        <Button variant="light" rightSection={<HiOutlinePaperAirplane />}>
+          Send
+        </Button>
       </Menu.Target>
 
       <Menu.Dropdown>

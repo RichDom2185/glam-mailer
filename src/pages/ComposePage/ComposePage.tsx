@@ -1,95 +1,122 @@
-import {
-  Button,
-  Card,
-  Divider,
-  Group,
-  Notification,
-  SimpleGrid,
-  Space,
-} from "@mantine/core";
-import React, { useRef, useState } from "react";
+import { Button, Card, Group, SimpleGrid } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { HiOutlineBackspace, HiOutlineDocumentText } from "react-icons/hi2";
 import SAMPLE_MARKDOWN_CONTENT from "../../assets/md-sample.md?raw";
 import Editor from "../../components/common/Editor";
 import Markdown from "../../components/common/Markdown";
-import { PLACEHOLDER_MARKDOWN_CONTENT } from "../../utils/constants";
+import {
+  HEADER_HEIGHT,
+  PLACEHOLDER_MARKDOWN_CONTENT,
+} from "../../utils/constants";
 
+import { useHeadroom } from "@mantine/hooks";
 import { defaultTheme } from "../../utils/theme";
 import ComposePageHeader from "./ComposePageHeader";
 import ComposePageMenu from "./ComposePageMenu";
 
-const minimalButtonProps = {
-  variant: "subtle",
-  px: "xs",
-};
-
 const ComposePage: React.FC = () => {
+  const isHeaderOpen = useHeadroom({ fixedAt: 120 });
   const [editorValue, setEditorValue] = useState(PLACEHOLDER_MARKDOWN_CONTENT);
   const ref = useRef<HTMLDivElement>(null);
 
   const [isFormatting, setIsFormatting] = useState(false);
 
   // TODO: Use a selector
-  const theme = defaultTheme;
+  const theme = useMemo(() => defaultTheme, []);
+  const handleLoadExample = useCallback(() => {
+    const confirm = window.confirm(
+      "Are you sure you want to load the example? Your current content will be lost."
+    );
+    if (confirm) {
+      setEditorValue(SAMPLE_MARKDOWN_CONTENT);
+    }
+  }, []);
+  const handleResetContent = useCallback(() => {
+    const confirm = window.confirm(
+      "Are you sure you want to clear all content?"
+    );
+    if (confirm) {
+      setEditorValue("");
+    }
+  }, []);
+
+  const notificationId = useRef<string>();
+  useEffect(() => {
+    if (isFormatting) {
+      notificationId.current = notifications.show({
+        loading: true,
+        title:
+          "Please wait while we turn your document into an email-compatible format",
+        withCloseButton: false,
+        message: <>This might take a few seconds&hellip;</>,
+      });
+    } else {
+      if (notificationId.current) {
+        notifications.hide(notificationId.current);
+      }
+    }
+  }, [isFormatting]);
+
   return (
     <div>
-      <SimpleGrid cols={2}>
-        <div>
-          <ComposePageHeader />
-          <div style={{ position: "sticky", top: 16 }}>
-            <Card shadow="lg" radius="md" p="xs" my="sm">
-              <Group justify="space-between">
-                <Button
-                  {...minimalButtonProps}
-                  rightSection={<HiOutlineDocumentText />}
-                  onClick={() => setEditorValue(SAMPLE_MARKDOWN_CONTENT)}
-                >
-                  Load Example
-                </Button>
-                <Button
-                  {...minimalButtonProps}
-                  color="red"
-                  rightSection={<HiOutlineBackspace />}
-                  onClick={() => setEditorValue("")}
-                >
-                  Clear All
-                </Button>
-              </Group>
-            </Card>
-            <Card shadow="lg" radius="md">
-              <Editor
-                mode="markdown"
-                onChange={setEditorValue}
-                value={editorValue}
-                showGutter={false}
-              />
-            </Card>
-          </div>
-        </div>
-        <div>
-          <ComposePageMenu sourceRef={ref} loadingCallback={setIsFormatting} />
-          {isFormatting && (
-            <>
-              <Space h="md" />
-              <Notification
-                loading
-                title="Please wait while we turn your document into an email-compatible format"
-                withCloseButton={false}
+      <ComposePageHeader />
+      <div
+        style={{
+          position: "sticky",
+          top: isHeaderOpen ? HEADER_HEIGHT + 16 : 16,
+          zIndex: 10,
+        }}
+      >
+        <Card shadow="sm" p="xs" my="sm">
+          <Group justify="space-between" wrap="nowrap">
+            <Button
+              variant="default"
+              leftSection={<HiOutlineDocumentText />}
+              onClick={handleLoadExample}
+            >
+              Load Example
+            </Button>
+            <Group gap="xs" wrap="nowrap">
+              <Button
+                variant="subtle"
+                color="red"
+                rightSection={<HiOutlineBackspace />}
+                onClick={handleResetContent}
               >
-                This might take a few seconds...
-              </Notification>
-            </>
-          )}
-          <Divider
-            my="sm"
-            variant="dashed"
-            label="Email preview"
-            labelPosition="center"
+                Clear All
+              </Button>
+              <ComposePageMenu
+                sourceRef={ref}
+                loadingCallback={setIsFormatting}
+              />
+            </Group>
+          </Group>
+        </Card>
+      </div>
+      <SimpleGrid cols={2}>
+        <Card mih={200} shadow="sm">
+          <Editor
+            height="100%"
+            mode="markdown"
+            onChange={setEditorValue}
+            value={editorValue}
+            showGutter={false}
+            setOptions={{ highlightActiveLine: false }}
+            theme="tomorrow"
           />
+        </Card>
+        <Card shadow="sm">
           <Markdown theme={theme} containerRef={ref}>
             {editorValue}
           </Markdown>
-        </div>
+        </Card>
       </SimpleGrid>
     </div>
   );

@@ -7,6 +7,8 @@ import {
 } from "@mantine/core";
 import "@mantine/core/styles.css";
 import { useDisclosure, useHeadroom } from "@mantine/hooks";
+import { Notifications } from "@mantine/notifications";
+import "@mantine/notifications/styles.css";
 import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { sendHello } from "./api/general";
@@ -30,6 +32,7 @@ const App: React.FC = () => {
 
   return (
     <MantineProvider theme={theme}>
+      <Notifications />
       <AppShell
         padding="md"
         navbar={{
