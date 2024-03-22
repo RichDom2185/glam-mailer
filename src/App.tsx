@@ -1,6 +1,8 @@
 import {
   AppShell,
   Burger,
+  Button,
+  CloseButton,
   Group,
   MantineProvider,
   createTheme,
@@ -20,6 +22,7 @@ const theme = createTheme({});
 const App: React.FC = () => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+  const [sideContentOpened, { close: closeSideContent }] = useDisclosure(true);
   const isPinned = useHeadroom({ fixedAt: 120 });
 
   useEffect(() => {
@@ -42,9 +45,9 @@ const App: React.FC = () => {
         aside={
           aside
             ? {
-                width: 500,
+                width: { lg: 500, xl: 600 },
                 breakpoint: "lg",
-                collapsed: { desktop: false, mobile: true },
+                collapsed: { desktop: false, mobile: sideContentOpened },
               }
             : undefined
         }
@@ -73,7 +76,21 @@ const App: React.FC = () => {
         <AppShell.Main>
           <Outlet />
         </AppShell.Main>
-        {aside && <AppShell.Aside p="md">{aside}</AppShell.Aside>}
+        {aside && (
+          <AppShell.Aside p="md">
+            <Button
+              variant="default"
+              rightSection={<CloseButton />}
+              ml="auto"
+              hiddenFrom="lg"
+              onClick={closeSideContent}
+              aria-label="Close"
+            >
+              Close
+            </Button>
+            {aside}
+          </AppShell.Aside>
+        )}
       </AppShell>
     </MantineProvider>
   );
