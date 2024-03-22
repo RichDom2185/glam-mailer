@@ -1,4 +1,4 @@
-import { Button, Card, Group, SimpleGrid } from "@mantine/core";
+import { Button, Card, Group } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import React, {
   useCallback,
@@ -13,7 +13,9 @@ import Editor from "../../components/common/Editor";
 import Markdown from "../../components/common/Markdown";
 import { PLACEHOLDER_MARKDOWN_CONTENT } from "../../utils/constants";
 
+import ResponsiveBody from "../../components/common/ResponsiveBody";
 import StickyToolbar from "../../components/common/StickyToolbar";
+import { useResponsive } from "../../utils/hooks";
 import { defaultTheme } from "../../utils/theme";
 import ComposePageHeader from "./ComposePageHeader";
 import ComposePageMenu from "./ComposePageMenu";
@@ -60,6 +62,33 @@ const ComposePage: React.FC = () => {
     }
   }, [isFormatting]);
 
+  const { isMobile } = useResponsive();
+  const editor = useMemo(
+    () => (
+      <Card h={isMobile ? "80vh" : undefined} shadow="sm">
+        <Editor
+          height="100%"
+          mode="markdown"
+          onChange={setEditorValue}
+          value={editorValue}
+          showGutter={false}
+          setOptions={{ highlightActiveLine: false }}
+        />
+      </Card>
+    ),
+    [editorValue, isMobile]
+  );
+  const preview = useMemo(
+    () => (
+      <Card shadow="sm">
+        <Markdown theme={theme} containerRef={ref}>
+          {editorValue}
+        </Markdown>
+      </Card>
+    ),
+    [editorValue, theme]
+  );
+
   return (
     <div>
       <ComposePageHeader />
@@ -88,23 +117,12 @@ const ComposePage: React.FC = () => {
           </Group>
         </Group>
       </StickyToolbar>
-      <SimpleGrid cols={2}>
-        <Card mih={200} shadow="sm">
-          <Editor
-            height="100%"
-            mode="markdown"
-            onChange={setEditorValue}
-            value={editorValue}
-            showGutter={false}
-            setOptions={{ highlightActiveLine: false }}
-          />
-        </Card>
-        <Card shadow="sm">
-          <Markdown theme={theme} containerRef={ref}>
-            {editorValue}
-          </Markdown>
-        </Card>
-      </SimpleGrid>
+      <ResponsiveBody
+        data={[
+          { element: editor, label: "Editor" },
+          { element: preview, label: "Preview" },
+        ]}
+      />
     </div>
   );
 };
