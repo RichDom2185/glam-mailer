@@ -17,13 +17,7 @@ const ResponsiveBody: React.FC<Props> = ({ data }) => {
           <React.Fragment key={index}>{element}</React.Fragment>
         ))}
       </SimpleGrid>
-      <Tabs
-        hiddenFrom="md"
-        display="flex"
-        style={{ flexDirection: "column" }}
-        h="85vh"
-        value={activeTab}
-      >
+      <Tabs hiddenFrom="md" value={activeTab}>
         <SegmentedControl
           pb={8} // Hardcoding to fix spacing bug
           mb="xs"
