@@ -1,7 +1,8 @@
 import remarkSimplePlantUML from "@akebifiky/remark-simple-plantuml";
-import React, { useMemo } from "react";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import addClasses from "rehype-add-classes";
+import rehypeExternalLinks from "rehype-external-links";
 import rehypeHighlight from "rehype-highlight";
 import rehypeMathjax from "rehype-mathjax";
 import remarkGemoji from "remark-gemoji";
@@ -10,10 +11,10 @@ import remarkMath from "remark-math";
 import remarkSmartypants from "remark-smartypants";
 import { remarkTruncateLinks } from "remark-truncate-links";
 
-import { Theme, getClassMappingFrom, getTheme } from "../../utils/theme";
+import { Theme, getClassMappingFrom } from "../../utils/theme";
 
 type Props = {
-  theme: Theme;
+  theme?: Theme;
   containerRef?: React.RefObject<HTMLDivElement>;
   children: string;
 };
@@ -29,20 +30,12 @@ const remarkPlugins = [
 ];
 
 const Markdown: React.FC<Props> = ({ theme, containerRef, children }) => {
-  const classesToAdd = useMemo(() => {
-    try {
-      const classesToAdd: {
-        [key: string]: string;
-      } = getClassMappingFrom(theme);
-      return classesToAdd;
-    } catch {
-      // FIXME: Handle this more gracefully inside getTheme
-      console.error("An error has occurred, using default theme");
-      const classesToAdd: {
-        [key: string]: string;
-      } = getClassMappingFrom(getTheme());
-      return classesToAdd;
+  const [classesToAdd, setClassesToAdd] = useState<Record<string, string>>({});
+  useEffect(() => {
+    if (!theme) {
+      return;
     }
+    setClassesToAdd(getClassMappingFrom(theme));
   }, [theme]);
 
   return (
@@ -55,8 +48,11 @@ const Markdown: React.FC<Props> = ({ theme, containerRef, children }) => {
           rehypeMathjax,
           [rehypeHighlight, {}],
           [addClasses, classesToAdd],
+          [
+            rehypeExternalLinks,
+            { target: "_blank", rel: ["nofollow", "noopener", "noreferrer"] },
+          ],
         ]}
-        linkTarget="_blank"
         children={children}
       />
     </div>

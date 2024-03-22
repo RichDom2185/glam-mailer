@@ -6,16 +6,12 @@ import {
   createTheme,
 } from "@mantine/core";
 import "@mantine/core/styles.css";
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, useHeadroom } from "@mantine/hooks";
 import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { sendHello } from "./api/general";
 import AppHeader from "./components/app/AppHeader";
 import AppNavigation from "./components/app/AppNavigation";
-import ComposePage from "./pages/ComposePage/ComposePage";
-import Drafts from "./pages/Drafts";
-import HomePage from "./pages/HomePage";
-import ThemeEditor from "./pages/ThemeEditor";
 import { HEADER_HEIGHT } from "./utils/constants";
 import { useSideContent } from "./utils/sideContent";
 
@@ -24,6 +20,7 @@ const theme = createTheme({});
 const App: React.FC = () => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+  const isPinned = useHeadroom({ fixedAt: 120 });
 
   useEffect(() => {
     sendHello();
@@ -41,7 +38,7 @@ const App: React.FC = () => {
           breakpoint: "sm",
           collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
         }}
-        header={{ height: HEADER_HEIGHT }}
+        header={{ height: HEADER_HEIGHT, collapsed: !isPinned }}
         aside={
           aside
             ? {
@@ -74,12 +71,7 @@ const App: React.FC = () => {
         </AppShell.Header>
         <AppNavigation />
         <AppShell.Main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/compose" element={<ComposePage />} />
-            <Route path="/drafts" element={<Drafts />} />
-            <Route path="/edit-theme" element={<ThemeEditor />} />
-          </Routes>
+          <Outlet />
         </AppShell.Main>
         {aside && <AppShell.Aside p="md">{aside}</AppShell.Aside>}
       </AppShell>

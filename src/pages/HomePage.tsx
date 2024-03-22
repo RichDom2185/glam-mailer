@@ -90,8 +90,8 @@ const HomePage: React.FC = () => {
         mx="auto"
         my="xl"
       >
-        {features.map((feature) => (
-          <Tag content={feature} />
+        {features.map((feature, i) => (
+          <Tag key={i} content={feature} />
         ))}
       </Flex>
       <Box maw={600} mx="auto" my="xl">
@@ -129,12 +129,16 @@ const HomePage: React.FC = () => {
             Start Writing
           </Button>
         </Link>
-        <Button variant="default" onClick={() => alert("Coming soon!")}>
-          Browse Themes
-        </Button>
+        <Link to="/themes">
+          <Button variant="default">Browse Themes</Button>
+        </Link>
       </Box>
     </Box>
   );
 };
+
+// For lazy loading
+export const Component = HomePage;
+Component.displayName = "HomePage";
 
 export default HomePage;

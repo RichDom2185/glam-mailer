@@ -4,6 +4,7 @@ import {
   HiOutlineDocumentDuplicate,
   HiOutlineEnvelope,
   HiOutlinePaintBrush,
+  HiOutlineSwatch,
 } from "react-icons/hi2";
 import { Link, useLocation } from "react-router-dom";
 
@@ -19,6 +20,12 @@ const sections = [
     color: "#c2410c", // Tailwind orange-700
     label: "Drafts",
     ref: "/drafts",
+  },
+  {
+    icon: HiOutlineSwatch,
+    color: "#7e22ce", // Tailwind purple-700
+    label: "Browse Themes",
+    ref: "/themes",
   },
   {
     icon: HiOutlinePaintBrush,

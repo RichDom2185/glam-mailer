@@ -12,14 +12,9 @@ import { HiOutlineBackspace, HiOutlineDocumentText } from "react-icons/hi2";
 import SAMPLE_MARKDOWN_CONTENT from "../../assets/md-sample.md?raw";
 import Editor from "../../components/common/Editor";
 import Markdown from "../../components/common/Markdown";
-import {
-  HEADER_HEIGHT,
-  PLACEHOLDER_MARKDOWN_CONTENT,
-} from "../../utils/constants";
-import { getTheme } from "../../utils/theme";
+import { PLACEHOLDER_MARKDOWN_CONTENT } from "../../utils/constants";
 
-import "ace-builds/src-noconflict/ext-language_tools";
-import "ace-builds/src-noconflict/mode-markdown";
+import { defaultTheme } from "../../utils/theme";
 import ComposePageHeader from "./ComposePageHeader";
 import ComposePageMenu from "./ComposePageMenu";
 
@@ -34,13 +29,14 @@ const ComposePage: React.FC = () => {
 
   const [isFormatting, setIsFormatting] = useState(false);
 
-  const theme = getTheme();
+  // TODO: Use a selector
+  const theme = defaultTheme;
   return (
     <div>
       <SimpleGrid cols={2}>
         <div>
           <ComposePageHeader />
-          <div style={{ position: "sticky", top: HEADER_HEIGHT + 16 }}>
+          <div style={{ position: "sticky", top: 16 }}>
             <Card shadow="lg" radius="md" p="xs" my="sm">
               <Group justify="space-between">
                 <Button
@@ -98,5 +94,9 @@ const ComposePage: React.FC = () => {
     </div>
   );
 };
+
+// For lazy loading
+export const Component = ComposePage;
+Component.displayName = "ComposePage";
 
 export default ComposePage;

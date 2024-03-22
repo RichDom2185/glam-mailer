@@ -9,7 +9,7 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   HiOutlineArrowPath,
   HiOutlineBackspace,
@@ -19,25 +19,19 @@ import FEATURE_MARKDOWN_CONTENT from "../assets/md-features.md?raw";
 import SAMPLE_MARKDOWN_CONTENT from "../assets/md-sample.md?raw";
 import Editor from "../components/common/Editor";
 import Markdown from "../components/common/Markdown";
-import defaultTheme from "../themes/default.yaml?raw";
-import { getTheme } from "../utils/theme";
-
-import "ace-builds/src-noconflict/ext-language_tools";
-import "ace-builds/src-noconflict/mode-yaml";
+import { Theme, defaultThemeFile, parseTheme } from "../utils/theme";
 
 const ThemeEditor: React.FC = () => {
-  const [editorValue, setEditorValue] = useState(defaultTheme);
+  const [editorValue, setEditorValue] = useState(defaultThemeFile);
   const [previewType, setPreviewType] = useState<"sample" | "features">(
     "features"
   );
-
-  const theme = useMemo(() => {
+  const [theme, setTheme] = useState<Theme>();
+  useEffect(() => {
     try {
-      return getTheme(editorValue);
+      setTheme(parseTheme(editorValue));
     } catch {
-      // TODO: Handle this more gracefully
-      console.error("Invalid theme, using default theme");
-      return getTheme(defaultTheme);
+      // Do nothing and only update if theme file is valid
     }
   }, [editorValue]);
 
@@ -65,7 +59,7 @@ const ThemeEditor: React.FC = () => {
           <Box style={{ display: "flex", justifyContent: "space-between" }}>
             <Button
               rightSection={<HiOutlineArrowPath />}
-              onClick={() => setEditorValue(defaultTheme)}
+              onClick={() => setEditorValue(defaultThemeFile)}
             >
               Reset to Default
             </Button>
@@ -113,5 +107,9 @@ const ThemeEditor: React.FC = () => {
     </div>
   );
 };
+
+// For lazy loading
+export const Component = ThemeEditor;
+Component.displayName = "ThemeEditor";
 
 export default ThemeEditor;
