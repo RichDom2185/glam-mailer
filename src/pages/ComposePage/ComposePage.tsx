@@ -11,18 +11,14 @@ import { HiOutlineBackspace, HiOutlineDocumentText } from "react-icons/hi2";
 import SAMPLE_MARKDOWN_CONTENT from "../../assets/md-sample.md?raw";
 import Editor from "../../components/common/Editor";
 import Markdown from "../../components/common/Markdown";
-import {
-  HEADER_HEIGHT,
-  PLACEHOLDER_MARKDOWN_CONTENT,
-} from "../../utils/constants";
+import { PLACEHOLDER_MARKDOWN_CONTENT } from "../../utils/constants";
 
-import { useHeadroom } from "@mantine/hooks";
+import StickyToolbar from "../../components/common/StickyToolbar";
 import { defaultTheme } from "../../utils/theme";
 import ComposePageHeader from "./ComposePageHeader";
 import ComposePageMenu from "./ComposePageMenu";
 
 const ComposePage: React.FC = () => {
-  const isHeaderOpen = useHeadroom({ fixedAt: 120 });
   const [editorValue, setEditorValue] = useState(PLACEHOLDER_MARKDOWN_CONTENT);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -67,39 +63,31 @@ const ComposePage: React.FC = () => {
   return (
     <div>
       <ComposePageHeader />
-      <div
-        style={{
-          position: "sticky",
-          top: isHeaderOpen ? HEADER_HEIGHT + 16 : 16,
-          zIndex: 10,
-        }}
-      >
-        <Card shadow="sm" p="xs" my="sm">
-          <Group justify="space-between" wrap="nowrap">
+      <StickyToolbar>
+        <Group justify="space-between" wrap="nowrap">
+          <Button
+            variant="default"
+            leftSection={<HiOutlineDocumentText />}
+            onClick={handleLoadExample}
+          >
+            Load Example
+          </Button>
+          <Group gap="xs" wrap="nowrap">
             <Button
-              variant="default"
-              leftSection={<HiOutlineDocumentText />}
-              onClick={handleLoadExample}
+              variant="subtle"
+              color="red"
+              rightSection={<HiOutlineBackspace />}
+              onClick={handleResetContent}
             >
-              Load Example
+              Clear All
             </Button>
-            <Group gap="xs" wrap="nowrap">
-              <Button
-                variant="subtle"
-                color="red"
-                rightSection={<HiOutlineBackspace />}
-                onClick={handleResetContent}
-              >
-                Clear All
-              </Button>
-              <ComposePageMenu
-                sourceRef={ref}
-                loadingCallback={setIsFormatting}
-              />
-            </Group>
+            <ComposePageMenu
+              sourceRef={ref}
+              loadingCallback={setIsFormatting}
+            />
           </Group>
-        </Card>
-      </div>
+        </Group>
+      </StickyToolbar>
       <SimpleGrid cols={2}>
         <Card mih={200} shadow="sm">
           <Editor
