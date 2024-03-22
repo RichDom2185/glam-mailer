@@ -2,13 +2,17 @@ import { AppShell, Box, Text, rem, useMantineTheme } from "@mantine/core";
 import React from "react";
 import AppSections from "./AppSections";
 
-const AppNavigation: React.FC = () => {
+type Props = {
+  handleCloseDrawer?: () => void;
+};
+
+const AppNavigation: React.FC<Props> = ({ handleCloseDrawer }) => {
   const theme = useMantineTheme();
 
   return (
     <AppShell.Navbar p="md">
       <AppShell.Section grow>
-        <AppSections />
+        <AppSections handleClick={handleCloseDrawer} />
       </AppShell.Section>
       <AppShell.Section>
         <Box

@@ -14,10 +14,13 @@ import AppHeader from "./components/app/AppHeader";
 import AppNavigation from "./components/app/AppNavigation";
 import { HEADER_HEIGHT } from "./utils/constants";
 
-const theme = createTheme({});
+const theme = createTheme({
+  defaultRadius: "md",
+});
 
 const App: React.FC = () => {
-  const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+  const [mobileOpened, { toggle: toggleMobile, close: closeMobile }] =
+    useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
   const isPinned = useHeadroom({ fixedAt: 120 });
 
@@ -56,7 +59,7 @@ const App: React.FC = () => {
             <AppHeader />
           </Group>
         </AppShell.Header>
-        <AppNavigation />
+        <AppNavigation handleCloseDrawer={closeMobile} />
         <AppShell.Main>
           <Outlet />
         </AppShell.Main>

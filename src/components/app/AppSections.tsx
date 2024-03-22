@@ -35,7 +35,11 @@ const sections = [
   },
 ] as const;
 
-const AppSections: React.FC = () => {
+type Props = {
+  handleClick?: () => void;
+};
+
+const AppSections: React.FC<Props> = ({ handleClick }) => {
   const location = useLocation();
   return (
     <div>
@@ -49,17 +53,13 @@ const AppSections: React.FC = () => {
             active={location.pathname === section.ref}
             label={section.label}
             color={section.color}
+            onClick={handleClick}
             styles={(theme) => ({
               root: { borderRadius: theme.radius.md },
               label: { fontWeight: 500 },
             })}
             leftSection={
-              <ThemeIcon
-                color={section.color}
-                variant="light"
-                radius="md"
-                size="lg"
-              >
+              <ThemeIcon color={section.color} variant="light" size="lg">
                 <Icon size={20} />
               </ThemeIcon>
             }
