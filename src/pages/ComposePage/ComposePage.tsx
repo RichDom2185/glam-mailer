@@ -12,10 +12,7 @@ import { HiOutlineBackspace, HiOutlineDocumentText } from "react-icons/hi2";
 import SAMPLE_MARKDOWN_CONTENT from "../../assets/md-sample.md?raw";
 import Editor from "../../components/common/Editor";
 import Markdown from "../../components/common/Markdown";
-import {
-  HEADER_HEIGHT,
-  PLACEHOLDER_MARKDOWN_CONTENT,
-} from "../../utils/constants";
+import { PLACEHOLDER_MARKDOWN_CONTENT } from "../../utils/constants";
 
 import { defaultTheme } from "../../utils/theme";
 import ComposePageHeader from "./ComposePageHeader";
@@ -39,7 +36,7 @@ const ComposePage: React.FC = () => {
       <SimpleGrid cols={2}>
         <div>
           <ComposePageHeader />
-          <div style={{ position: "sticky", top: HEADER_HEIGHT + 16 }}>
+          <div style={{ position: "sticky", top: 16 }}>
             <Card shadow="lg" radius="md" p="xs" my="sm">
               <Group justify="space-between">
                 <Button

@@ -129,9 +129,9 @@ const HomePage: React.FC = () => {
             Start Writing
           </Button>
         </Link>
-        <Button variant="default" onClick={() => alert("Coming soon!")}>
-          Browse Themes
-        </Button>
+        <Link to="/themes">
+          <Button variant="default">Browse Themes</Button>
+        </Link>
       </Box>
     </Box>
   );

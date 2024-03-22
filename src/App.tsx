@@ -6,7 +6,7 @@ import {
   createTheme,
 } from "@mantine/core";
 import "@mantine/core/styles.css";
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, useHeadroom } from "@mantine/hooks";
 import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { sendHello } from "./api/general";
@@ -19,6 +19,7 @@ const theme = createTheme({});
 const App: React.FC = () => {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+  const isPinned = useHeadroom({ fixedAt: 120 });
 
   useEffect(() => {
     sendHello();
@@ -33,7 +34,7 @@ const App: React.FC = () => {
           breakpoint: "sm",
           collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
         }}
-        header={{ height: HEADER_HEIGHT }}
+        header={{ height: HEADER_HEIGHT, collapsed: !isPinned }}
         styles={(theme) => ({
           main: { backgroundColor: theme.colors.gray[0] },
         })}
