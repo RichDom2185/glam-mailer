@@ -31,7 +31,7 @@
     "remark-gemoji": "^8.0.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
-    "remark-smartypants": "^2.0.0",
+    "remark-smartypants": "^3.0.0",
     "remark-truncate-links": "^1.0.3",
     "yaml": "^2.2.2"
   },
