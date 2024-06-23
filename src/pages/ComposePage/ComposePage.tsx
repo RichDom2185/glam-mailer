@@ -80,7 +80,7 @@ const ComposePage: React.FC = () => {
   );
   const preview = useMemo(
     () => (
-      <Card shadow="sm" h="100%">
+      <Card shadow="sm" h="100%" style={{ overflowY: "auto" }}>
         <Markdown theme={theme} containerRef={ref}>
           {editorValue}
         </Markdown>
@@ -88,6 +88,12 @@ const ComposePage: React.FC = () => {
     ),
     [editorValue, theme]
   );
+
+  // FIXME: Abstraction violation
+  const footerHeight =
+    "calc(var(--app-shell-footer-offset, 0rem) + var(--app-shell-padding))";
+  const negativeFooterHeight =
+    "calc(-1 * var(--app-shell-footer-offset, 0rem) - var(--app-shell-padding))";
 
   return (
     <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
@@ -117,12 +123,22 @@ const ComposePage: React.FC = () => {
           </Group>
         </Group>
       </StickyToolbar>
-      <ResponsiveBody
-        data={[
-          { element: editor, label: "Editor" },
-          { element: preview, label: "Preview" },
-        ]}
-      />
+      <div
+        style={{
+          flex: 1,
+          overflow: "auto",
+          // FIXME: Hacky workaround to not clip shadows
+          marginBottom: negativeFooterHeight,
+          paddingBottom: footerHeight,
+        }}
+      >
+        <ResponsiveBody
+          data={[
+            { element: editor, label: "Editor" },
+            { element: preview, label: "Preview" },
+          ]}
+        />
+      </div>
     </div>
   );
 };

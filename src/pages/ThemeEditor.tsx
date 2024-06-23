@@ -63,7 +63,7 @@ const ThemeEditor: React.FC = () => {
   );
   const preview = useMemo(
     () => (
-      <Card shadow="sm" h="100%">
+      <Card shadow="sm" h="100%" style={{ overflowY: "auto" }}>
         <Select
           value={previewType}
           label="Preview type"
@@ -79,6 +79,12 @@ const ThemeEditor: React.FC = () => {
     ),
     [previewType, theme]
   );
+
+  // FIXME: Abstraction violation
+  const footerHeight =
+    "calc(var(--app-shell-footer-offset, 0rem) + var(--app-shell-padding))";
+  const negativeFooterHeight =
+    "calc(-1 * var(--app-shell-footer-offset, 0rem) - var(--app-shell-padding))";
 
   return (
     <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
@@ -102,12 +108,22 @@ const ThemeEditor: React.FC = () => {
           </Button>
         </Group>
       </StickyToolbar>
-      <ResponsiveBody
-        data={[
-          { element: editor, label: "Editor" },
-          { element: preview, label: "Preview" },
-        ]}
-      />
+      <div
+        style={{
+          flex: 1,
+          overflow: "auto",
+          // FIXME: Hacky workaround to not clip shadows
+          marginBottom: negativeFooterHeight,
+          paddingBottom: footerHeight,
+        }}
+      >
+        <ResponsiveBody
+          data={[
+            { element: editor, label: "Editor" },
+            { element: preview, label: "Preview" },
+          ]}
+        />
+      </div>
     </div>
   );
 };
