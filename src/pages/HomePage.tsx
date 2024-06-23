@@ -18,24 +18,12 @@ const features: React.ReactNode[] = [
     Tables
     <TbTable />
   </Group>,
-  <Markdown
+  <img
     // FIXME: Remove hardcoding of Tailwind prefix
-    // FIXME: Remove hardcoding of margins
-    theme={
-      {
-        styles: {
-          "*": [
-            "tw-mt-[-10px]",
-            "tw-mr-[-9px]",
-            "tw-mb-[-18px]",
-            "tw-ml-[-4px]",
-          ],
-        },
-      } as any
-    }
-  >
-    {"```plantuml\ncard UML\n```"}
-  </Markdown>,
+    className="tw-mt-[-10px] tw-mr-[-9px] tw-mb-[-18px] tw-ml-[-4px]"
+    // Equivalent to ```plantuml\ncard UML\n```
+    src="https://www.plantuml.com/plantuml/png/IquiIb48zVK10000"
+  />,
   <Code color="blue.0" fz="md">
     code
   </Code>,
