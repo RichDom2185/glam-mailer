@@ -2,18 +2,22 @@ import { Box, Button, Code, Flex, Group, Text, Title } from "@mantine/core";
 import React from "react";
 import { HiOutlinePencil } from "react-icons/hi2";
 import { TbTable } from "react-icons/tb";
+import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
-import Markdown from "../components/common/Markdown";
+import rehypeMathjax from "rehype-mathjax";
+import remarkMath from "remark-math";
 import Tag from "../components/text/Tag";
 
 const features: React.ReactNode[] = [
   "Markdown",
-  <Markdown
+  <ReactMarkdown
     // FIXME: Remove hardcoding of Tailwind prefix
-    theme={{ styles: { p: ["tw-m-0"] } } as any}
+    className="*:tw-m-0"
+    remarkPlugins={[remarkMath]}
+    rehypePlugins={[rehypeMathjax]}
   >
     {"$\\text{LaTeX}$"}
-  </Markdown>,
+  </ReactMarkdown>,
   <Group gap={6}>
     Tables
     <TbTable />
