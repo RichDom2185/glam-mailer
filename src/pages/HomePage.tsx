@@ -24,8 +24,9 @@ const features: React.ReactNode[] = [
   </Group>,
   <img
     // FIXME: Remove hardcoding of Tailwind prefix
-    className="tw-mt-[-10px] tw-mr-[-9px] tw-mb-[-18px] tw-ml-[-4px]"
+    className="tw-m-[-10px_-9px_-18px_-4px]"
     // Equivalent to ```plantuml\ncard UML\n```
+    alt="UML"
     src="https://www.plantuml.com/plantuml/png/IquiIb48zVK10000"
   />,
   <Code color="blue.0" fz="md">

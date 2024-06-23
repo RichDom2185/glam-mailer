@@ -3,10 +3,11 @@ import { createPortal } from "react-dom";
 
 type Props = {
   children: React.ReactNode;
+  title?: string;
   preflight?: boolean;
 };
 
-const Tailwind: React.FC<Props> = ({ children, preflight = false }) => {
+const Tailwind: React.FC<Props> = ({ children, title, preflight = false }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [ref, setRef] = useState<HTMLIFrameElement | null>(null);
   const root = ref?.contentWindow?.document?.body;
@@ -42,6 +43,7 @@ const Tailwind: React.FC<Props> = ({ children, preflight = false }) => {
   return (
     <iframe
       ref={setRef}
+      title={title ?? "Tailwind Preview"}
       style={{
         width: "100%",
         border: "none",
