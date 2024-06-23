@@ -61,7 +61,7 @@ const HomePage: React.FC = () => {
       <Text
         fz="lg"
         // FIXME: Remove hardcoding of Tailwind prefix
-        className="tw-text-slate-700"
+        className="!tw-text-slate-700"
         fs="italic"
         ta="center"
         my="xl"
@@ -90,7 +90,7 @@ const HomePage: React.FC = () => {
         <Text
           fz="lg"
           // FIXME: Remove hardcoding of Tailwind prefix
-          className="tw-text-slate-700"
+          className="!tw-text-slate-700"
           fs="italic"
           ta="center"
         >

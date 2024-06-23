@@ -10,7 +10,7 @@ const Tag: React.FC<Props> = ({ content }) => {
     <Card w="max-content" shadow="sm" p="sm">
       <Text
         // FIXME: Remove hardcoding of Tailwind prefix
-        className="tw-text-slate-700"
+        className="!tw-text-slate-700"
       >
         {content}
       </Text>
