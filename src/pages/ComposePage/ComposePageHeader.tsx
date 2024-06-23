@@ -4,7 +4,7 @@ import { HiOutlinePencilSquare } from "react-icons/hi2";
 
 const ComposePageHeader: React.FC = () => {
   return (
-    <Card shadow="sm">
+    <Card shadow="sm" style={{ flexShrink: 0 }}>
       <Title order={2} mb="lg">
         <Group>
           <HiOutlinePencilSquare /> Let's create an email!

@@ -14,7 +14,7 @@ const Editor: React.FC<IAceEditorProps> = (props) => {
       setOptions={{ cursorStyle: "smooth" }}
       fontSize={theme.fontSizes.md}
       width="100%"
-      height="600px"
+      height="100%"
       wrapEnabled
       {...props}
     />

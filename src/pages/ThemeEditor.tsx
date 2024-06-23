@@ -50,7 +50,7 @@ const ThemeEditor: React.FC = () => {
   const { isMobile } = useResponsive();
   const editor = useMemo(
     () => (
-      <Card h={isMobile ? "80vh" : undefined} shadow="sm">
+      <Card h={isMobile ? "100%" : undefined} shadow="sm">
         <Editor
           height="100%"
           mode="yaml"
@@ -63,7 +63,7 @@ const ThemeEditor: React.FC = () => {
   );
   const preview = useMemo(
     () => (
-      <Card shadow="sm">
+      <Card shadow="sm" h="100%">
         <Select
           value={previewType}
           label="Preview type"
@@ -81,7 +81,7 @@ const ThemeEditor: React.FC = () => {
   );
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
       <ThemeEditorHeader />
       <StickyToolbar>
         <Group justify="space-between" wrap="nowrap">

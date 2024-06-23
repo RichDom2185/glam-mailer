@@ -4,7 +4,7 @@ import { HiOutlinePaintBrush } from "react-icons/hi2";
 
 const ThemeEditorHeader: React.FC = () => {
   return (
-    <Card shadow="sm">
+    <Card shadow="sm" style={{ flexShrink: 0 }}>
       <Title order={2} mb="lg">
         <Group>
           <HiOutlinePaintBrush /> Let us create a theme!

@@ -63,7 +63,11 @@ const App: React.FC = () => {
           </Group>
         </AppShell.Header>
         <AppNavigation handleCloseDrawer={closeMobile} />
-        <AppShell.Main>
+        <AppShell.Main
+          display="flex"
+          h="100dvh"
+          style={{ justifyContent: "center" }}
+        >
           <Outlet />
         </AppShell.Main>
       </AppShell>

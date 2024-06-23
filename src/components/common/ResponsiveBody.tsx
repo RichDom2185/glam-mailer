@@ -12,12 +12,18 @@ const ResponsiveBody: React.FC<Props> = ({ data }) => {
   const [activeTab, setActiveTab] = useState("0");
   return (
     <>
-      <SimpleGrid cols={data.length} visibleFrom="md">
+      <SimpleGrid cols={data.length} visibleFrom="md" h="100%">
         {data.map(({ element }, index) => (
           <React.Fragment key={index}>{element}</React.Fragment>
         ))}
       </SimpleGrid>
-      <Tabs hiddenFrom="md" value={activeTab}>
+      <Tabs
+        hiddenFrom="md"
+        value={activeTab}
+        h="100%"
+        display="flex"
+        style={{ flexDirection: "column" }}
+      >
         <SegmentedControl
           pb={8} // Hardcoding to fix spacing bug
           mb="xs"
@@ -25,20 +31,9 @@ const ResponsiveBody: React.FC<Props> = ({ data }) => {
           data={data.map(({ label }, i) => ({ label, value: `${i}` }))}
           onChange={setActiveTab}
         />
-        {/* <Tabs.List grow>
-          {data.map(({ label }, index) => (
-            <Tabs.Tab key={index} value={`${index}`}>
-              {label}
-            </Tabs.Tab>
-          ))}
-        </Tabs.List> */}
+
         {data.map(({ element }, index) => (
-          <Tabs.Panel
-            h="100%"
-            key={index}
-            value={`${index}`}
-            style={{ flexGrow: 1 }}
-          >
+          <Tabs.Panel key={index} value={`${index}`} style={{ flexGrow: 1 }}>
             {element}
           </Tabs.Panel>
         ))}
