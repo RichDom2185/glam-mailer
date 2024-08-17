@@ -4,10 +4,11 @@ import React from "react";
 import { HEADER_HEIGHT } from "../../utils/constants";
 
 type Props = {
+  width?: React.CSSProperties["width"];
   children: React.ReactNode;
 };
 
-const StickyToolbar: React.FC<Props> = ({ children }) => {
+const StickyToolbar: React.FC<Props> = ({ children, width }) => {
   const isHeaderOpen = useHeadroom({ fixedAt: 120 });
 
   return (
@@ -16,6 +17,7 @@ const StickyToolbar: React.FC<Props> = ({ children }) => {
         position: "sticky",
         top: isHeaderOpen ? HEADER_HEIGHT + 16 : 16,
         zIndex: 10,
+        width,
       }}
     >
       <Card shadow="sm" p="xs" my="sm">
