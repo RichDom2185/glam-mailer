@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { Theme } from "../../types/theme";
 import { buildRenderPipeline } from "../../utils/markdown";
-import { Theme, getClassMappingFrom } from "../../utils/theme";
+import { getClassMappingFrom } from "../../utils/theme";
 
 type Props = {
   theme?: Theme;

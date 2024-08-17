@@ -1,24 +1,12 @@
+import axios from "axios";
 import { Components } from "react-markdown";
 import { parse } from "yaml";
 import defaultThemeFile from "../themes/default.yaml?raw";
-
-import axios from "axios";
+import { Theme } from "../types/theme";
 import {
   API_CONVERSION_ENDPOINT_URL,
   TAILWIND_CLASS_PREFIX,
 } from "./constants";
-
-export type Theme = {
-  name: string;
-  author: string;
-  description: string;
-  version: string;
-  styles: {
-    // TODO: Update types to reflect usage of CSS selectors,
-    //       not just HTML element tags
-    [tag in keyof Components]: string[];
-  };
-};
 
 export { defaultThemeFile };
 export const parseTheme = (yaml: string): Theme => {

@@ -6,8 +6,9 @@ import Markdown from "../components/common/Markdown";
 import ResponsiveBody from "../components/common/ResponsiveBody";
 import StickyToolbar from "../components/common/StickyToolbar";
 import markdownTemplates from "../lib/markdown";
+import { Theme } from "../types/theme";
 import { useResponsive } from "../utils/hooks";
-import { Theme, defaultThemeFile, parseTheme } from "../utils/theme";
+import { defaultThemeFile, parseTheme } from "../utils/theme";
 import ThemeEditorHeader from "./ThemeEditor/ThemeEditorHeader";
 
 const previewTypes: ReadonlyArray<{
