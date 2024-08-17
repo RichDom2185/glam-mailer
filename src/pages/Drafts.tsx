@@ -78,7 +78,7 @@ const Drafts: React.FC = () => {
         flexDirection: "column",
         alignItems: "center",
         width: "100%",
-        gap: 20,
+        gap: 16,
       }}
     >
       <StickyToolbar width="100%">
