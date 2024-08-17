@@ -1,4 +1,4 @@
-import { Button, Card, Group, Select } from "@mantine/core";
+import { Box, Button, Card, Group, Select } from "@mantine/core";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { HiOutlineArrowPath, HiOutlineBackspace } from "react-icons/hi2";
 import Editor from "../components/common/Editor";
@@ -10,15 +10,19 @@ import { useResponsive } from "../utils/hooks";
 import { Theme, defaultThemeFile, parseTheme } from "../utils/theme";
 import ThemeEditorHeader from "./ThemeEditor/ThemeEditorHeader";
 
-const previewTypes = [
-  { value: "features", label: "Preview entire Markdown syntax" },
-  { value: "sample", label: "Preview a sample email" },
+const previewTypes: ReadonlyArray<{
+  value: keyof typeof markdownTemplates;
+  label: string;
+}> = [
+  { value: "syntaxOverview", label: "Markdown Syntax" },
+  { value: "defaultPlaceholder", label: "Sample Email" },
+  { value: "appFeatures", label: "Feature Showcase" },
 ];
 
 const ThemeEditor: React.FC = () => {
   const [editorValue, setEditorValue] = useState(defaultThemeFile);
   const [previewType, setPreviewType] =
-    useState<(typeof previewTypes)[number]["value"]>("features");
+    useState<keyof typeof markdownTemplates>("syntaxOverview");
 
   const [theme, setTheme] = useState<Theme>();
   useEffect(() => {
@@ -65,15 +69,13 @@ const ThemeEditor: React.FC = () => {
       <Card shadow="sm" h="100%" style={{ overflowY: "auto" }}>
         <Select
           value={previewType}
-          label="Preview type"
-          onChange={(e) => e && setPreviewType(e)}
+          label={<Box pb={8}>Choose Template</Box>}
+          onChange={(v) =>
+            v && setPreviewType(v as keyof typeof markdownTemplates)
+          }
           data={previewTypes}
         />
-        <Markdown theme={theme}>
-          {previewType === "features"
-            ? markdownTemplates.syntaxOverview
-            : markdownTemplates.appFeatures}
-        </Markdown>
+        <Markdown theme={theme}>{markdownTemplates[previewType]}</Markdown>
       </Card>
     ),
     [previewType, theme]
