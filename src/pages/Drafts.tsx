@@ -128,7 +128,10 @@ const Drafts: React.FC = () => {
           </Group>
         </Group>
       </StickyToolbar>
-      <div className="ag-theme-quartz" style={{ width: "100%" }}>
+      <div
+        className="ag-theme-quartz"
+        style={{ width: "100%", height: "100%" }}
+      >
         <AgGridReact
           onGridReady={(params) => (gridApi.current = params.api)}
           rowData={drafts}
@@ -140,14 +143,12 @@ const Drafts: React.FC = () => {
           paginationPageSize={pageSize}
           suppressPaginationPanel
           suppressMovableColumns
-          domLayout="autoHeight"
         />
       </div>
       <Pagination
         total={Math.ceil(drafts.length / pageSize)}
         value={pageNumber}
         onChange={handlePageChange}
-        pb={20}
       />
     </div>
   );
