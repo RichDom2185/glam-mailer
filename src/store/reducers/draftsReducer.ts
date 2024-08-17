@@ -2,7 +2,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type Draft = {
   id: string;
-  themeId: string;
+  // TODO: Set up themeId when slice is introduced
+  // themeId: string;
   content: string;
 };
 
