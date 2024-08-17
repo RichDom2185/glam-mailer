@@ -63,8 +63,10 @@ const Drafts: React.FC = () => {
   const handlePageSizeChange = (newPageSize: number) => {
     const oldPageSize = pageSize;
     const oldPageNumber = pageNumber;
-    const oldPosition = oldPageSize * (oldPageNumber - 1);
-    const newPageNumber = Math.ceil(oldPosition / newPageSize);
+    // 0-indexed
+    const oldOffset = oldPageSize * (oldPageNumber - 1) - 1;
+    // New page number (1-indexed) of the first item in the old page
+    const newPageNumber = Math.floor((oldOffset + 1) / newPageSize) + 1;
     handlePageChange(newPageNumber);
     setPageSize(newPageSize);
   };
