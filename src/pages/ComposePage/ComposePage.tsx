@@ -8,13 +8,13 @@ import React, {
   useState,
 } from "react";
 import { HiOutlineBackspace, HiOutlineDocumentText } from "react-icons/hi2";
-import SAMPLE_MARKDOWN_CONTENT from "../../assets/md-sample.md?raw";
 import Editor from "../../components/common/Editor";
 import Markdown from "../../components/common/Markdown";
 import { PLACEHOLDER_MARKDOWN_CONTENT } from "../../utils/constants";
 
 import ResponsiveBody from "../../components/common/ResponsiveBody";
 import StickyToolbar from "../../components/common/StickyToolbar";
+import markdownTemplates from "../../lib/markdown";
 import { useResponsive } from "../../utils/hooks";
 import { defaultTheme } from "../../utils/theme";
 import ComposePageHeader from "./ComposePageHeader";
@@ -33,7 +33,7 @@ const ComposePage: React.FC = () => {
       "Are you sure you want to load the example? Your current content will be lost."
     );
     if (confirm) {
-      setEditorValue(SAMPLE_MARKDOWN_CONTENT);
+      setEditorValue(markdownTemplates.appFeatures);
     }
   }, []);
   const handleResetContent = useCallback(() => {

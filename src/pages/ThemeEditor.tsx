@@ -1,12 +1,11 @@
 import { Button, Card, Group, Select } from "@mantine/core";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { HiOutlineArrowPath, HiOutlineBackspace } from "react-icons/hi2";
-import FEATURE_MARKDOWN_CONTENT from "../assets/md-features.md?raw";
-import SAMPLE_MARKDOWN_CONTENT from "../assets/md-sample.md?raw";
 import Editor from "../components/common/Editor";
 import Markdown from "../components/common/Markdown";
 import ResponsiveBody from "../components/common/ResponsiveBody";
 import StickyToolbar from "../components/common/StickyToolbar";
+import markdownTemplates from "../lib/markdown";
 import { useResponsive } from "../utils/hooks";
 import { Theme, defaultThemeFile, parseTheme } from "../utils/theme";
 import ThemeEditorHeader from "./ThemeEditor/ThemeEditorHeader";
@@ -72,8 +71,8 @@ const ThemeEditor: React.FC = () => {
         />
         <Markdown theme={theme}>
           {previewType === "features"
-            ? FEATURE_MARKDOWN_CONTENT
-            : SAMPLE_MARKDOWN_CONTENT}
+            ? markdownTemplates.syntaxOverview
+            : markdownTemplates.appFeatures}
         </Markdown>
       </Card>
     ),

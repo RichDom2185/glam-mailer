@@ -1,3 +1,5 @@
+This file provides a comprehensive overview of the Markdown syntax supported by glam-mailer. It includes examples of various features such as headings, text formatting, lists, code blocks, tables, images, links, equations, UML diagrams, and emojis.
+
 # Heading 1
 
 Some normal text.

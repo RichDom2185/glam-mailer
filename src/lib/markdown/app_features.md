@@ -36,7 +36,7 @@ In addition, we also have additional features as detailed in the following secti
 
 ### GitHub-Flavored Markdown (GFM)
 
-We also support a subste of the [GFM](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) specification, so stuff like ~~strikethrough~~ text are also available. Oh, and not to mention, :heart*eyes: \_emojis* :smile: :sparkles: :exclamation:
+We also support a subste of the [GFM](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) specification, so stuff like ~~strikethrough~~ text are also available. Oh, and not to mention, :heart_eyes: *emojis* :smile: :sparkles: :exclamation:
 
 > Click [here](https://gist.github.com/rxaviers/7360908) for the full list of supported emojis
 
