@@ -1,3 +1,8 @@
+import {
+  ComboboxItem,
+  ComboboxParsedItemGroup,
+  OptionsFilter,
+} from "@mantine/core";
 import axios from "axios";
 import { Components } from "react-markdown";
 import { parse } from "yaml";
@@ -7,6 +12,7 @@ import {
   API_CONVERSION_ENDPOINT_URL,
   TAILWIND_CLASS_PREFIX,
 } from "./constants";
+import { throttleWithMemoize } from "./functions";
 
 export { defaultThemeFile };
 export const parseTheme = (yaml: string): Theme => {
@@ -57,3 +63,43 @@ export const formatAsHtmlEmail = async (html: string) => {
   });
   return res.data;
 };
+
+// TODO: Support async loading state
+export const filterTailwindClassesSync: OptionsFilter = throttleWithMemoize<
+  OptionsFilter,
+  ComboboxItem[]
+>(
+  ({ options, search, limit }) => {
+    if (search.trim().length < 2) {
+      return [
+        { label: "Enter at least 2 characters", value: "", disabled: true },
+      ];
+    }
+    const fullResults = options.flatMap((option) => {
+      const o = option as ComboboxParsedItemGroup;
+      const matches = o.items.filter((item) =>
+        item.label.startsWith(search.trim())
+      );
+      if (matches.length === 0) {
+        return [];
+      }
+      return [{ group: o.group, items: matches }];
+    });
+    // Limit results
+    const results = [];
+    let count = 0;
+    for (const option of fullResults) {
+      if (count >= limit) {
+        break;
+      }
+      const items = option.items.slice(0, limit - count);
+      count += items.length;
+      results.push({ group: option.group, items });
+    }
+    return results;
+  },
+  1000,
+  [{ label: "Loading…", value: "", disabled: true }],
+  // The options are constant, so we can use the search term as the cache key
+  ({ search }) => search.trim()
+);
