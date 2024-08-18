@@ -18,5 +18,10 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum magni debitis per
                 ||     ||
 ```
 
-Best regards,
+<!--
+Note the extra two spaces at the end of the next line.
+It is needed to provide a soft/line break without having
+to create a new paragraph. Also, comments are removed.
+-->
+Best regards,  
 Sender
