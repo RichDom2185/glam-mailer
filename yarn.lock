@@ -482,40 +482,40 @@
     levn "^0.4.1"
 
 "@floating-ui/core@^1.6.0":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.6.7.tgz#7602367795a390ff0662efd1c7ae8ca74e75fb12"
-  integrity sha512-yDzVT/Lm101nQ5TCVeK65LtdN7Tj4Qpr9RTXJ2vPFLqtLxwOrpoxAHAJI8J3yYWUc40J0BDBheaitK5SJmno2g==
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.6.8.tgz#aa43561be075815879305965020f492cdb43da12"
+  integrity sha512-7XJ9cPU+yI2QeLS+FCSlqNFZJq8arvswefkZrYI1yQBbftw6FyrZOxYSh+9S7z7TpeWlRt9zJ5IhM1WIL334jA==
   dependencies:
-    "@floating-ui/utils" "^0.2.7"
+    "@floating-ui/utils" "^0.2.8"
 
 "@floating-ui/dom@^1.0.0":
-  version "1.6.10"
-  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.6.10.tgz#b74c32f34a50336c86dcf1f1c845cf3a39e26d6f"
-  integrity sha512-fskgCFv8J8OamCmyun8MfjB1Olfn+uZKjOKZ0vhYF3gRmEUXcGOjxWL8bBr7i4kIuPZ2KD2S3EUIOxnjC8kl2A==
+  version "1.6.11"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.6.11.tgz#8631857838d34ee5712339eb7cbdfb8ad34da723"
+  integrity sha512-qkMCxSR24v2vGkhYDo/UzxfJN3D4syqSjyuTFz6C7XcpU1pASPRieNI0Kj5VP3/503mOfYiGY891ugBX1GlABQ==
   dependencies:
     "@floating-ui/core" "^1.6.0"
-    "@floating-ui/utils" "^0.2.7"
+    "@floating-ui/utils" "^0.2.8"
 
-"@floating-ui/react-dom@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-2.1.1.tgz#cca58b6b04fc92b4c39288252e285e0422291fb0"
-  integrity sha512-4h84MJt3CHrtG18mGsXuLCHMrug49d7DFkU0RMIyshRveBeyV2hmV/pDaF2Uxtu8kgq5r46llp5E5FQiR0K2Yg==
+"@floating-ui/react-dom@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-2.1.2.tgz#a1349bbf6a0e5cb5ded55d023766f20a4d439a31"
+  integrity sha512-06okr5cgPzMNBy+Ycse2A6udMi4bqwW/zgBF/rwjcNqWkyr82Mcg8b0vjX8OJpZFy/FKjJmw6wV7t44kK6kW7A==
   dependencies:
     "@floating-ui/dom" "^1.0.0"
 
 "@floating-ui/react@^0.26.9":
-  version "0.26.23"
-  resolved "https://registry.yarnpkg.com/@floating-ui/react/-/react-0.26.23.tgz#28985e5ce482c34f347f28076f11267e47a933bd"
-  integrity sha512-9u3i62fV0CFF3nIegiWiRDwOs7OW/KhSUJDNx2MkQM3LbE5zQOY01sL3nelcVBXvX7Ovvo3A49I8ql+20Wg/Hw==
+  version "0.26.24"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react/-/react-0.26.24.tgz#072b9dfeca4e79ef4e3000ef1c28e0ffc86f4ed4"
+  integrity sha512-2ly0pCkZIGEQUq5H8bBK0XJmc1xIK/RM3tvVzY3GBER7IOD1UgmC2Y2tjj4AuS+TC+vTE1KJv2053290jua0Sw==
   dependencies:
-    "@floating-ui/react-dom" "^2.1.1"
-    "@floating-ui/utils" "^0.2.7"
+    "@floating-ui/react-dom" "^2.1.2"
+    "@floating-ui/utils" "^0.2.8"
     tabbable "^6.0.0"
 
-"@floating-ui/utils@^0.2.7":
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.7.tgz#d0ece53ce99ab5a8e37ebdfe5e32452a2bfc073e"
-  integrity sha512-X8R8Oj771YRl/w+c1HqAC1szL8zWQRwFvgDwT129k9ACdBoud/+/rX9V0qiMl6LWUdP9voC2nDVZYPMQQsb6eA==
+"@floating-ui/utils@^0.2.8":
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.8.tgz#21a907684723bbbaa5f0974cf7730bd797eb8e62"
+  integrity sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==
 
 "@humanwhocodes/module-importer@^1.0.1":
   version "1.0.1"
@@ -560,9 +560,9 @@
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
 "@mantine/core@^7.8.0":
-  version "7.12.2"
-  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-7.12.2.tgz#d8fb7969a62dd5367331b141e053c4b2989c677a"
-  integrity sha512-FrMHOKq4s3CiPIxqZ9xnVX7H4PEGNmbtHMvWO/0YlfPgoV0Er/N/DNJOFW1ys4WSnidPTayYeB41riyxxGOpRQ==
+  version "7.13.1"
+  resolved "https://registry.yarnpkg.com/@mantine/core/-/core-7.13.1.tgz#96c5e4801cb30771ae7ff4648eb8b3f24302b307"
+  integrity sha512-KH/WrcY/5pf3FxUUbtG77xyd7kfp6SRPAJFkxjFlg9kXroiQ7baljphY371CwPYPINERShUdvCQLpz4r4WMIHA==
   dependencies:
     "@floating-ui/react" "^0.26.9"
     clsx "^2.1.1"
@@ -572,22 +572,22 @@
     type-fest "^4.12.0"
 
 "@mantine/hooks@^7.8.0":
-  version "7.12.2"
-  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.12.2.tgz#f8e6a8345bb0892d8d1f5d1dc544a568572b79f4"
-  integrity sha512-dVMw8jpM0hAzc8e7/GNvzkk9N0RN/m+PKycETB3H6lJGuXJJSRR4wzzgQKpEhHwPccktDpvb4rkukKDq2jA8Fg==
+  version "7.13.1"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-7.13.1.tgz#0fd9972c9ec0a840a2f3dfb02fcd8f1f4b8d868a"
+  integrity sha512-Hfd4v380pPJUKDbARk+egdAanx7bpGZmaOn8G3QBZjwDufVopxip0WPkifUKUIMeYY1CTboa+1go9l56ZWrrSg==
 
 "@mantine/notifications@^7.8.0":
-  version "7.12.2"
-  resolved "https://registry.yarnpkg.com/@mantine/notifications/-/notifications-7.12.2.tgz#531a6a3f23adc579b0a8f322ccf42b1789327698"
-  integrity sha512-gTvLHkoAZ42v5bZxibP9A50djp5ndEwumVhHSa7mxQ8oSS23tt3It/6hOqH7M+9kHY0a8s+viMiflUzTByA9qg==
+  version "7.13.1"
+  resolved "https://registry.yarnpkg.com/@mantine/notifications/-/notifications-7.13.1.tgz#e0823076c9367330ac6b78bd78f9418e1310f202"
+  integrity sha512-Lc66wRar/nqADoaSlLHntREWbMlDDVs/Sabla2ac/V8jftLOnQpVPMefMpFVGYNJdhT3mG/9bguZV5K7pkjSXQ==
   dependencies:
-    "@mantine/store" "7.12.2"
+    "@mantine/store" "7.13.1"
     react-transition-group "4.4.5"
 
-"@mantine/store@7.12.2":
-  version "7.12.2"
-  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.12.2.tgz#da576a63d860d44525bd18c9dd3977b6d2840011"
-  integrity sha512-NqL31sO/KcAETEWP/CiXrQOQNoE4168vZsxyXacQHGBueVMJa64WIDQtKLHrCnFRMws3vsXF02/OO4bH4XGcMQ==
+"@mantine/store@7.13.1":
+  version "7.13.1"
+  resolved "https://registry.yarnpkg.com/@mantine/store/-/store-7.13.1.tgz#e05b186fc37eb0385973a41c64bf80362ffd4651"
+  integrity sha512-/ZiVU8oFMkzSNrXqAvxb9ZfHWgVg7E8apUEQCzBh9sxgxdVoM9Y1+2YqOoi885hxskmPpkmGP+VGOJnQ6OKJig==
 
 "@noble/hashes@^1.1.5":
   version "1.4.0"
@@ -2951,9 +2951,9 @@ react-markdown@^9.0.1:
     vfile "^6.0.0"
 
 react-number-format@^5.3.1:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-5.4.1.tgz#ca191af06c4618a823874efa486df50a1abbfc18"
-  integrity sha512-NICOjo/70dcAiwVmH6zMWoZrTQDlBrEXV/f7S0t/ewlpzp4z00pasg5G1yBX6NHLafwOF3QZ+VvK/XApwSKxdA==
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-5.4.2.tgz#aec282241f36cee31da13dc5e0f364c0fc6902ab"
+  integrity sha512-cg//jVdS49PYDgmcYoBnMMHl4XNTMuV723ZnHD2aXYtWWWqbVF3hjQ8iB+UZEuXapLbeA8P8H+1o6ZB1lcw3vg==
 
 react-redux@^9.1.2:
   version "9.1.2"
@@ -2977,9 +2977,9 @@ react-remove-scroll-bar@^2.3.6:
     tslib "^2.0.0"
 
 react-remove-scroll@^2.5.7:
-  version "2.5.10"
-  resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-2.5.10.tgz#5fae456a23962af6d3c38ca1978bcfe0806c4061"
-  integrity sha512-m3zvBRANPBw3qxVVjEIPEQinkcwlFZ4qyomuWVpNJdv4c6MvHfXV0C3L9Jx5rr3HeBHKNRX+1jreB5QloDIJjA==
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/react-remove-scroll/-/react-remove-scroll-2.6.0.tgz#fb03a0845d7768a4f1519a99fdb84983b793dc07"
+  integrity sha512-I2U4JVEsQenxDAKaVa3VZ/JeJZe0/2DxPWL8Tj8yLKctQJQiZM52pn/GWFpSp8dftjM3pSAHVJZscAnC/y+ySQ==
   dependencies:
     react-remove-scroll-bar "^2.3.6"
     react-style-singleton "^2.2.1"
@@ -3485,9 +3485,9 @@ type-check@^0.4.0, type-check@~0.4.0:
     prelude-ls "^1.2.1"
 
 type-fest@^4.12.0:
-  version "4.26.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.26.0.tgz#703f263af10c093cd6277d079e26b9e17d517c4b"
-  integrity sha512-OduNjVJsFbifKb57UqZ2EMP1i4u64Xwow3NYXUtBbD4vIwJdQd4+xl8YDou1dlm4DVrtwT/7Ky8z8WyCULVfxw==
+  version "4.26.1"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-4.26.1.tgz#a4a17fa314f976dd3e6d6675ef6c775c16d7955e"
+  integrity sha512-yOGpmOAL7CkKe/91I5O3gPICmJNLJ1G4zFYVAsRHg7M64biSnPtRj0WNQt++bRkjYOqjWXrhnUw1utzmVErAdg==
 
 typescript-eslint@^8.5.0:
   version "8.7.0"
