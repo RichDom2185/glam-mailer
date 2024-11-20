@@ -5,7 +5,7 @@ import {
   HiOutlineDocumentDuplicate,
   HiOutlinePaperAirplane,
 } from "react-icons/hi2";
-import ReactToPrint from "react-to-print";
+import { useReactToPrint } from "react-to-print";
 import { MAIL_PROVIDERS } from "../../utils/mail.ts";
 import { formatAsHtmlEmail } from "../../utils/theme.ts";
 
@@ -42,6 +42,7 @@ type Props = {
 };
 
 const ComposePageMenu: React.FC<Props> = ({ sourceRef, loadingCallback }) => {
+  const print = useReactToPrint({ contentRef: sourceRef, pageStyle: "" });
   return (
     <Menu>
       <Menu.Target>
@@ -72,15 +73,12 @@ const ComposePageMenu: React.FC<Props> = ({ sourceRef, loadingCallback }) => {
         >
           Copy to clipboard
         </Menu.Item>
-        <ReactToPrint
-          pageStyle=""
-          trigger={() => (
-            <Menu.Item leftSection={<HiOutlineArrowTopRightOnSquare />}>
-              Save as PDF
-            </Menu.Item>
-          )}
-          content={() => sourceRef.current}
-        />
+        <Menu.Item
+          leftSection={<HiOutlineArrowTopRightOnSquare />}
+          onClick={() => print()}
+        >
+          Save as PDF
+        </Menu.Item>
       </Menu.Dropdown>
     </Menu>
   );
