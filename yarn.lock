@@ -2975,9 +2975,9 @@ react-textarea-autosize@8.5.6:
     use-latest "^1.2.1"
 
 react-to-print@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/react-to-print/-/react-to-print-3.0.2.tgz#3739392fe8d650e3e8a14662d16f16ad57dec050"
-  integrity sha512-FS/Z4LLq0bgWaxd7obygFQ8yRFdKW74iE8fIVjFFsPJWIXmuL8CIO+4me1Hj44lrlxQ00gscSNb3BRM8olbwXg==
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-to-print/-/react-to-print-3.0.4.tgz#c5efd89721d6298837f1cc53a2ec485e7ca09906"
+  integrity sha512-33opQsuskUs0UyK1OLAAN2Ziy1GPneeTLvypRYjT6E9bl2NDxZtEr0KYMOxszcBY0bs+XlWOkGNlyla55GQjuA==
 
 react-transition-group@4.4.5:
   version "4.4.5"
