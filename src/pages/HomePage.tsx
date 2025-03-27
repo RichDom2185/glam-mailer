@@ -10,14 +10,14 @@ import Tag from "../components/text/Tag";
 
 const features: React.ReactNode[] = [
   "Markdown",
-  <ReactMarkdown
+  <div
     // FIXME: Remove hardcoding of Tailwind prefix
     className="*:tw-m-0"
-    remarkPlugins={[remarkMath]}
-    rehypePlugins={[rehypeMathjax]}
   >
-    {"$\\text{LaTeX}$"}
-  </ReactMarkdown>,
+    <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeMathjax]}>
+      {"$\\text{LaTeX}$"}
+    </ReactMarkdown>
+  </div>,
   <Group gap={6}>
     Tables
     <TbTable />
