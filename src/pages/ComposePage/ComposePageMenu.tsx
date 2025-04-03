@@ -10,7 +10,7 @@ import { MAIL_PROVIDERS } from "../../utils/mail.ts";
 import { formatAsHtmlEmail } from "../../utils/theme.ts";
 
 const handleCopyToClipboard = async (
-  sourceRef: React.RefObject<HTMLDivElement>,
+  sourceRef: React.RefObject<HTMLDivElement | null>,
   loadingCallback: (loadingState: boolean) => void = () => {}
 ) => {
   const e = sourceRef.current;
@@ -37,7 +37,7 @@ const handleCopyToClipboard = async (
 };
 
 type Props = {
-  sourceRef: React.RefObject<HTMLDivElement>;
+  sourceRef: React.RefObject<HTMLDivElement | null>;
   loadingCallback?: (loadingState: boolean) => void;
 };
 

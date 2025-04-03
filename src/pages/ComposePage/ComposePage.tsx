@@ -45,7 +45,7 @@ const ComposePage: React.FC = () => {
     }
   }, []);
 
-  const notificationId = useRef<string>();
+  const notificationId = useRef<string>(undefined);
   useEffect(() => {
     if (isFormatting) {
       notificationId.current = notifications.show({

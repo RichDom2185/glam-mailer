@@ -5,7 +5,7 @@ import { getClassMappingFrom } from "../../utils/theme";
 
 type Props = {
   theme?: Theme;
-  containerRef?: React.RefObject<HTMLDivElement>;
+  containerRef?: React.RefObject<HTMLDivElement | null>;
   children: string;
 };
 

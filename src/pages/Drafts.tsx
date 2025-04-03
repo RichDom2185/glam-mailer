@@ -53,7 +53,7 @@ const Drafts: React.FC = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [pageSize, setPageSize] = useState(20);
 
-  const gridApi = useRef<GridApi>();
+  const gridApi = useRef<GridApi>(undefined);
 
   const handlePageChange = useCallback((newPageNumber: number) => {
     setPageNumber(newPageNumber);
