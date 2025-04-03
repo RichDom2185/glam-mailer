@@ -10,7 +10,7 @@ import { useDisclosure, useHeadroom } from "@mantine/hooks";
 import { Notifications } from "@mantine/notifications";
 import "@mantine/notifications/styles.css";
 import React, { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router";
 import { sendHello } from "./api/general";
 import AppHeader from "./components/app/AppHeader";
 import AppNavigation from "./components/app/AppNavigation";

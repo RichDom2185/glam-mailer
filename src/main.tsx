@@ -3,7 +3,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "./App.tsx";
 import "./index.css";
 import { appRoutes } from "./routes.ts";
@@ -15,10 +15,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider
-        router={createBrowserRouter(
-          [{ path: "/*", element: <App />, children: appRoutes }],
-          { future: { v7_relativeSplatPath: true } }
-        )}
+        router={createBrowserRouter([
+          { path: "/*", element: <App />, children: appRoutes },
+        ])}
       />
     </Provider>
   </React.StrictMode>

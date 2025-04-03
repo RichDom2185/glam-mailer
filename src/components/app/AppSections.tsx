@@ -6,7 +6,7 @@ import {
   HiOutlinePaintBrush,
   HiOutlineSwatch,
 } from "react-icons/hi2";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router";
 
 const sections = [
   {

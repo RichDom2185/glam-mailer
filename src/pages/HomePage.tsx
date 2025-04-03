@@ -3,7 +3,7 @@ import React from "react";
 import { HiOutlinePencil } from "react-icons/hi2";
 import { TbTable } from "react-icons/tb";
 import ReactMarkdown from "react-markdown";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import rehypeMathjax from "rehype-mathjax";
 import remarkMath from "remark-math";
 import Tag from "../components/text/Tag";
